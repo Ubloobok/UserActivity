@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="SessionGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sessions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Session">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RegionCollection">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Region">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Images">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="Image">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="Source" type="xs:string" />
+                                            <xs:element minOccurs="0" name="Data" type="xs:string" />
+                                          </xs:sequence>
+                                          <xs:attribute name="Name" type="xs:string" use="required" />
+                                          <xs:attribute name="Type" type="xs:string" use="required" />
+                                          <xs:attribute name="DpiX" type="xs:unsignedShort" use="required" />
+                                          <xs:attribute name="DpiY" type="xs:unsignedShort" use="required" />
+                                          <xs:attribute name="Width" type="xs:unsignedShort" use="required" />
+                                          <xs:attribute name="Height" type="xs:unsignedShort" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="Name" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ActivityCollection">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Activity">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="UtcDateTime" type="xs:string" use="required" />
+                                  <xs:attribute name="Kind" type="xs:string" use="required" />
+                                  <xs:attribute name="InRegionX" type="xs:unsignedByte" use="required" />
+                                  <xs:attribute name="InRegionY" type="xs:unsignedShort" use="required" />
+                                  <xs:attribute name="RegionName" type="xs:string" use="required" />
+                                  <xs:attribute name="ImageName" type="xs:string" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="UID" type="xs:string" use="required" />
+                  <xs:attribute name="UtcShift" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="UtcStartDateTime" type="xs:string" use="required" />
+                  <xs:attribute name="UtcEndDateTime" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

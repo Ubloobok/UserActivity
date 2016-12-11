@@ -1,0 +1,15 @@
+﻿<Window
+	x:Class="UserActivity.Viewer.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:v="clr-namespace:UserActivity.Viewer.View"
+	xmlns:vm="clr-namespace:UserActivity.Viewer.ViewModel"
+	Title="UAV - User Activity Viewer" Height="600" Width="800">
+
+	<Grid>
+		<v:ViewerView
+			DataContext="{Binding Path=Viewer, Mode=OneWay, Source={StaticResource ResourceKey=Locator}}">
+		</v:ViewerView>
+	</Grid>
+
+</Window>

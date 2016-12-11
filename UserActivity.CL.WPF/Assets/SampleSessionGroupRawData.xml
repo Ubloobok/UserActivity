@@ -1,0 +1,97 @@
+﻿<?xml version="1.0"?>
+<SessionGroup>
+  <Sessions>
+    <Session
+      UID="4DA1963A-1FAA-4259-BCB2-60C1C7E98ACB" UtcShift="4"
+      UtcStartDateTime="2014.06.09 17:45:44" UtcEndDateTime="2014.06.09 17:45:44">
+      <RegionCollection>
+        <Region Name="Выбор Режима">
+          <Images>
+            <Image
+              Name="1368x738" Type="RawJpg"
+              DpiX="300" DpiY="300" Width="1368" Height="738">
+              <Data><![CDATA[9j4AAQSkZJRgABAQEBLAEs...]]></Data>
+            </Image>
+            <Image
+              Name="1920x1050" Type="FileJpg"
+              DpiX="300" DpiY="300" Width="1920" Height="1050">
+              <Source><![CDATA[Выбор_Режима_1920_1050.jpg]]></Source>
+            </Image>
+          </Images>
+        </Region>
+        <Region Name="Выбор Режима">
+          <Images>
+            <Image
+              Name="1368x738" Type="RawJpg"
+              DpiX="300" DpiY="300" Width="1368" Height="738">
+              <Data><![CDATA[9j4AAQSkZJRgABAQEBLAEs...]]></Data>
+            </Image>
+            <Image
+              Name="1920x1050" Type="FileJpg"
+              DpiX="300" DpiY="300" Width="1920" Height="1050">
+              <Source><![CDATA[Выбор_Режима_1920_1050.jpg]]></Source>
+            </Image>
+          </Images>
+        </Region>
+      </RegionCollection>
+      <ActivityCollection>
+        <Activity
+          UtcDateTime="2014.06.09 17:45:45" Kind="Movement"
+          InRegionX="25" InRegionY="300"
+          RegionName="Выбор Режима" ImageName="1368x738">
+        </Activity>
+        <Activity
+          UtcDateTime="2014.06.09 17:45:47" Kind="Click"
+          InRegionX="25" InRegionY="300"
+          RegionName="Выбор Режима" ImageName="1368x738">
+        </Activity>
+      </ActivityCollection>
+    </Session>
+    <Session
+        UID="4DA1963A-1FAA-4259-BCB2-60C1C7E98ACB" UtcShift="4"
+        UtcStartDateTime="2014.06.09 17:45:44" UtcEndDateTime="2014.06.09 17:45:44">
+      <RegionCollection>
+        <Region Name="Выбор Режима">
+          <Images>
+            <Image
+              Name="1368x738" Type="RawJpg"
+              DpiX="300" DpiY="300" Width="1368" Height="738">
+              <Data><![CDATA[9j4AAQSkZJRgABAQEBLAEs...]]></Data>
+            </Image>
+            <Image
+              Name="1920x1050" Type="FileJpg"
+              DpiX="300" DpiY="300" Width="1920" Height="1050">
+              <Source><![CDATA[Выбор_Режима_1920_1050.jpg]]></Source>
+            </Image>
+          </Images>
+        </Region>
+        <Region Name="Выбор Режима">
+          <Images>
+            <Image
+              Name="1368x738" Type="RawJpg"
+              DpiX="300" DpiY="300" Width="1368" Height="738">
+              <Data><![CDATA[9j4AAQSkZJRgABAQEBLAEs...]]></Data>
+            </Image>
+            <Image
+              Name="1920x1050" Type="FileJpg"
+              DpiX="300" DpiY="300" Width="1920" Height="1050">
+              <Source><![CDATA[Выбор_Режима_1920_1050.jpg]]></Source>
+            </Image>
+          </Images>
+        </Region>
+      </RegionCollection>
+      <ActivityCollection>
+        <Activity
+          UtcDateTime="2014.06.09 17:45:45" Kind="Movement"
+          InRegionX="25" InRegionY="300"
+          RegionName="Выбор Режима" ImageName="1368x738">
+        </Activity>
+        <Activity
+          UtcDateTime="2014.06.09 17:45:47" Kind="Click"
+          InRegionX="25" InRegionY="300"
+          RegionName="Выбор Режима" ImageName="1368x738">
+        </Activity>
+      </ActivityCollection>
+    </Session>
+  </Sessions>
+</SessionGroup>
