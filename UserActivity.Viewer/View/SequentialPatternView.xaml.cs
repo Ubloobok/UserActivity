@@ -16,16 +16,16 @@ using UserActivity.Viewer.ViewModel;
 
 namespace UserActivity.Viewer.View
 {
-	/// <summary>
-	/// Interaction logic for ActivitiesDataGridView.xaml
-	/// </summary>
-	public partial class ActivitiesDataGridView : UserControl
-	{
-		public ActivitiesDataGridView()
-		{
-			InitializeComponent();
-		}
+    /// <summary>
+    /// Логика взаимодействия для SequentialPatternView.xaml
+    /// </summary>
+    public partial class SequentialPatternView : UserControl
+    {
+        public SequentialPatternView()
+        {
+            InitializeComponent();
+        }
 
-        public ActivitiesDataGridVM ViewModel => DataContext as ActivitiesDataGridVM;
-	}
+        public SequentialPatternVM ViewModel => DataContext as SequentialPatternVM;
+    }
 }

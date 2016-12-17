@@ -10,27 +10,27 @@ using UserActivity.Viewer.Extensions;
 
 namespace UserActivity.Viewer.ViewModel
 {
-	public class ActivitiesDataGridVM : ComponentVM
-	{
-		public ActivitiesDataGridVM()
-		{
-			Activities = new ObservableCollection<Activity>();
-		}
+    public class ActivitiesDataGridVM : ComponentVM
+    {
+        public ActivitiesDataGridVM()
+        {
+            Activities = new ObservableCollection<Activity>();
+        }
 
-		public void Initialize(RegionImageItemVM regionImage, IEnumerable<Activity> activities)
-		{
-			Header =
-				regionImage == null ? "Список Действий" :
-				regionImage.DisplayName + " (Список Действий)";
+        public void Initialize(RegionImageItemVM regionImage, IEnumerable<Activity> activities)
+        {
+            Header =
+                regionImage == null ? "Список Действий" :
+                regionImage.DisplayName + " (Список Действий)";
 
-			Activities.Clear();
-			Activities.AddRange(activities);
-		}
+            Activities.Clear();
+            Activities.AddRange(activities);
+        }
 
-		public ObservableCollection<Activity> Activities
-		{
-			get;
-			private set;
-		}
-	}
+        public ObservableCollection<Activity> Activities
+        {
+            get;
+            private set;
+        }
+    }
 }

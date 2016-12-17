@@ -30,19 +30,11 @@ namespace UserActivity.Viewer.ViewModel
 		public ViewModelLocator()
 		{
 			ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
 			var viewerVm = new ViewerVM();
-
 			SimpleIoc.Default.Register<ViewerVM>(() => viewerVm);
 		}
 
-		public ViewerVM Viewer
-		{
-			get
-			{
-				return SimpleIoc.Default.GetInstance<ViewerVM>();
-			}
-		}
+		public ViewerVM Viewer => SimpleIoc.Default.GetInstance<ViewerVM>();
 
 		public static void Cleanup()
 		{

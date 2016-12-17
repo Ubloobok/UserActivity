@@ -58,11 +58,7 @@ namespace UserActivity.Viewer.View
 			PalleteSelector.SelectionChanged += OnPalleteSelectorSelectionChanged;
 		}
 
-		public HeatMapVM ViewModel
-		{
-			get;
-			set;
-		}
+        public HeatMapVM ViewModel => DataContext as HeatMapVM;
 
 		private void OnLoaded(object sender, RoutedEventArgs e)
 		{
@@ -249,7 +245,7 @@ namespace UserActivity.Viewer.View
 
 		public void Unload()
 		{
-			ViewModel = null;
+            DataContext = null;
 			_intensityMap.Clear();
 			_intensityMap = null;
 			HeatImage.Source = null;
