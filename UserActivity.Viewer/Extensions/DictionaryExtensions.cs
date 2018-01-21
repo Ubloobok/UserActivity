@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UserActivity.Viewer.Extensions
+namespace System.Linq
 {
 	public static class DictionaryExtensions
 	{

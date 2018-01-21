@@ -8,57 +8,52 @@ using System.Threading.Tasks;
 
 namespace UserActivity.Viewer.ViewModel
 {
+    /// <summary>
+    /// Base class for components.
+    /// </summary>
 	public class ComponentVM : ViewModelBase
-	{
-		private string _header;
-		private object _view;
+    {
+        private string _header;
+        private object _view;
 
-		/// <summary>
-		/// Sets or gets the header property.
-		/// Changes to that property's value raise the PropertyChanged event. 
-		/// </summary>
-		public string Header
-		{
-			get { return _header; }
-			set
-			{
-				if (_header == value)
-				{
-					return;
-				}
-				_header = value;
-				RaisePropertyChanged(() => Header);
-			}
-		}
+        /// <summary>Header for tab.</summary>
+        public string Header
+        {
+            get { return _header; }
+            set
+            {
+                if (_header == value)
+                {
+                    return;
+                }
+                _header = value;
+                RaisePropertyChanged();
+            }
+        }
 
-		/// <summary>
-		/// Sets or gets the view property.
-		/// Changes to that property's value raise the PropertyChanged event. 
-		/// </summary>
-		public object View
-		{
-			get { return _view; }
-			set
-			{
-				if (_view == value)
-				{
-					return;
-				}
-				_view = value;
-				RaisePropertyChanged(() => View);
-			}
-		}
+        /// <summary>View for view model.</summary>
+        public object View
+        {
+            get { return _view; }
+            set
+            {
+                if (_view == value)
+                {
+                    return;
+                }
+                _view = value;
+                RaisePropertyChanged();
+            }
+        }
 
-		/// <summary>
-		/// Gets or sets close command;
-		/// </summary>
-		public RelayCommand<ComponentVM> CloseCommand { get; set; }
+        /// <summary>Close command.</summary>
+        public RelayCommand<ComponentVM> CloseCommand { get; set; }
 
-		/// <summary>
-		/// Unloads current component and all resources.
-		/// </summary>
-		public virtual void Unload()
-		{
-		}
-	}
+        /// <summary>
+        /// Unloads current component and all resources.
+        /// </summary>
+        public virtual void Unload()
+        {
+        }
+    }
 }

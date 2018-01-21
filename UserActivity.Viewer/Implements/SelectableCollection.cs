@@ -7,44 +7,63 @@ using System.ComponentModel;
 
 namespace UserActivity.Viewer.Implements
 {
-	public class CollectionItem<T>
-	{
-		public string DisplayValue { get; set; }
-		public T Value { get; set; }
-	}
+    /// <summary>
+    /// Collection item.
+    /// </summary>
+    public class CollectionItem
+    {
+        /// <summary>
+        /// Create new collection item.
+        /// </summary>
+        public static CollectionItem<T> New<T>(T value, string displayValue) =>
+            new CollectionItem<T>() { Value = value, DisplayValue = displayValue };
+    }
 
-	public class SelectableCollection<T> : ObservableCollection<T>
-		where T : class
-	{
-		private T _selectedItem;
+    /// <summary>
+    /// Collection item.
+    /// </summary>
+    public class CollectionItem<T>
+    {
+        /// <summary>Display value.</summary>
+        public string DisplayValue { get; set; }
+        /// <summary>Value.</summary>
+        public T Value { get; set; }
+    }
 
-		public SelectableCollection()
-		{
-		}
+    /// <summary>
+    /// Collection for selectors controls.
+    /// </summary>
+    public class SelectableCollection<T> : ObservableCollection<T>
+        where T : class
+    {
+        private T _selectedItem;
 
-		public SelectableCollection(params T[] items)
-			: base(items ?? Enumerable.Empty<T>())
-		{
-		}
+        /// <summary>Ctor.</summary>
+        public SelectableCollection()
+        {
+        }
 
-		/// <summary>
-		/// Gets or sets selected item.
-		/// </summary>
-		public T SelectedItem
-		{
-			get { return _selectedItem; }
-			set
-			{
-				_selectedItem = value;
-				OnPropertyChanged(new PropertyChangedEventArgs("SelectedItem"));
-				var selectedItemChanged = SelectedItemChanged;
-				if (selectedItemChanged != null)
-				{
-					selectedItemChanged(this, EventArgs.Empty);
-				}
-			}
-		}
+        /// <summary>Ctor.</summary>
+        public SelectableCollection(params T[] items)
+            : base(items ?? Enumerable.Empty<T>())
+        {
+        }
 
-		public event EventHandler SelectedItemChanged;
-	}
+        /// <summary>Selected item.</summary>
+        public T SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("SelectedItem"));
+                SelectedItemChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// SelectedItem property was changed.
+        /// </summary>
+        public event EventHandler SelectedItemChanged;
+    }
 }

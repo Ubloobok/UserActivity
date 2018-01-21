@@ -5,19 +5,54 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	mc:Ignorable="d" 
-	d:DesignHeight="300" d:DesignWidth="300">
-	<Grid>
-		<DataGrid
-			IsReadOnly="True" AutoGenerateColumns="False"
-			ItemsSource="{Binding Path=Activities, Mode=OneWay}">
-			<DataGrid.Columns>
-				<DataGridTextColumn Header="Дата/Время (UTC)" Binding="{Binding Path=UtcDateTimeString, Mode=OneWay}" />
-				<DataGridTextColumn Header="Вид" Binding="{Binding Path=Kind, Mode=OneWay}" />
-				<DataGridTextColumn Header="X" Binding="{Binding Path=InRegionX, Mode=OneWay}" />
-				<DataGridTextColumn Header="Y" Binding="{Binding Path=InRegionY, Mode=OneWay}" />
-				<DataGridTextColumn Header="Регион" Binding="{Binding Path=RegionName, Mode=OneWay}" />
-				<DataGridTextColumn Header="Изображение" Binding="{Binding Path=ImageName, Mode=OneWay}" />
-			</DataGrid.Columns>
-		</DataGrid>
-	</Grid>
+	d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="200" MaxWidth="400" />
+            <ColumnDefinition Width="3*" MinWidth="200" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+            Grid.Column="0">
+            <TextBlock Text="Данные" Style="{StaticResource TextBlockStyleSubHeader}" />
+            <Button
+                Content="Импортировать файл(ы)"
+                Command="{Binding Path=ImportDataFromFileCommand, Mode=OneWay}"
+                Style="{StaticResource LinkButton}">
+            </Button>
+            <TextBlock
+                Text="{Binding Path=DataStatusString, Mode=OneWay}"
+                Style="{StaticResource TextBlockStyleBodyText}"
+                TextWrapping="Wrap">
+            </TextBlock>
+
+            <TextBlock Text="Фильтрация" Style="{StaticResource TextBlockStyleSubHeader}" />
+            <TextBlock Text="Регион" Style="{StaticResource TextBlockStyleSmallSubHeader}" />
+            <ComboBox
+                DisplayMemberPath="DisplayName"
+                ItemsSource="{Binding Path=RegionSelector, Mode=OneWay}"
+                SelectedItem="{Binding Path=RegionSelector.SelectedItem, Mode=TwoWay}">
+            </ComboBox>
+            <TextBlock
+                Text="{Binding Path=FilteredDataStatusString, Mode=OneWay}"
+                Style="{StaticResource TextBlockStyleBodyText}"
+                TextWrapping="Wrap">
+            </TextBlock>
+        </StackPanel>
+
+        <DataGrid
+            Grid.Column="1"
+            IsReadOnly="True" AutoGenerateColumns="False"
+            ItemsSource="{Binding Path=Activities, Mode=OneWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата/Время (UTC)" Binding="{Binding Path=UtcDateTimeString, Mode=OneWay}" />
+                <DataGridTextColumn Header="Вид" Binding="{Binding Path=Kind, Mode=OneWay}" />
+                <DataGridTextColumn Header="X" Binding="{Binding Path=InRegionX, Mode=OneWay}" />
+                <DataGridTextColumn Header="Y" Binding="{Binding Path=InRegionY, Mode=OneWay}" />
+                <DataGridTextColumn Header="Регион" Binding="{Binding Path=RegionName, Mode=OneWay}" />
+                <DataGridTextColumn Header="Изображение" Binding="{Binding Path=ImageName, Mode=OneWay}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </UserControl>

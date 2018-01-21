@@ -103,6 +103,10 @@
     <Compile Include="Implements\SelectableCollection.cs" />
     <Compile Include="Patterns\PatternExtensions.cs" />
     <Compile Include="Patterns\PatternHelper.cs" />
+    <Compile Include="ViewModel\NewTabVM.cs" />
+    <Compile Include="View\NewTabView.xaml.cs">
+      <DependentUpon>NewTabView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SequentialPatternView.xaml.cs">
       <DependentUpon>SequentialPatternView.xaml</DependentUpon>
     </Compile>
@@ -142,6 +146,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\NewTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SequentialPatternView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

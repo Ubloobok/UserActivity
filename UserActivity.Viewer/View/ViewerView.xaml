@@ -109,27 +109,27 @@
         <GridSplitter Grid.Column="0" Style="{StaticResource VerticalGridSplitter}" />
 
         <TabControl
-			x:Name="ComponentsRegion"
-			Grid.Column="1" Background="Transparent"
-			ItemsSource="{Binding Components, Mode=OneWay}"
-			SelectedItem="{Binding Path=Components.SelectedItem, Mode=TwoWay}">
+            x:Name="ComponentsRegion"
+            Grid.Column="1" Background="Transparent"
+            ItemsSource="{Binding Components, Mode=OneWay}"
+            SelectedItem="{Binding Path=Components.SelectedItem, Mode=TwoWay}">
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-							Text="{Binding Path=Header, Mode=OneWay}"
-							Style="{StaticResource TextBlockStyleSmallSubHeader}"
-							VerticalAlignment="Center">
+                            Text="{Binding Path=Header, Mode=OneWay}"
+                            Style="{StaticResource TextBlockStyleSmallSubHeader}"
+                            VerticalAlignment="Center">
                         </TextBlock>
                         <Button
-							Margin="5,0,0,2" Padding="0,0,0,2"
-							Width="20" Height="20"
-							Background="Transparent" BorderBrush="Transparent"
-							VerticalAlignment="Center"
-							VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-							Command="{Binding Path=CloseCommand, Mode=OneWay}"
-							CommandParameter="{Binding Path=., Mode=TwoWay}"
-							Content="x" >
+                            Margin="5,0,0,2" Padding="0,0,0,2"
+                            Width="20" Height="20"
+                            Background="Transparent" BorderBrush="Transparent"
+                            VerticalAlignment="Center"
+                            VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                            Command="{Binding Path=CloseCommand, Mode=OneWay}"
+                            CommandParameter="{Binding Path=., Mode=TwoWay}"
+                            Content="x" >
                         </Button>
                     </StackPanel>
                 </DataTemplate>

@@ -8,132 +8,145 @@
 	xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 	mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="800">
 
-	<Grid Background="White">
+    <Grid Background="White">
 
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" MinWidth="150" MaxWidth="400" />
-			<ColumnDefinition Width="3*" MinWidth="75" />
-		</Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="150" MaxWidth="400" />
+            <ColumnDefinition Width="3*" MinWidth="75" />
+        </Grid.ColumnDefinitions>
 
-		<ScrollViewer
-			Margin="0,0,5,0"
-			HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top"
-			HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-			<StackPanel Margin="5,5,5,5">
-				<TextBlock
-					Margin="0,0,0,0"
-					Text="Настройки"
-					Style="{StaticResource TextBlockStyleSubHeader}">
-				</TextBlock>
-				<TextBlock
-					Margin="0,5,0,0"
-					Text="Прозрачность"
-					Style="{StaticResource TextBlockStyleSmallSubHeader}">
-				</TextBlock>
-				<xctk:DoubleUpDown
-					Value="{Binding Path=HeatMapOpacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-					Increment="0.05"  Minimum="0" Maximum="1">
-				</xctk:DoubleUpDown>
-				<TextBlock
-					Margin="0,5,0,0"
-					Text="Палитра"
-					Style="{StaticResource TextBlockStyleSmallSubHeader}">
-				</TextBlock>
-				<ComboBox
-					x:Name="PalleteSelector"
-					Margin="0,5,0,0" Height="20"
-					HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-					<ComboBoxItem Height="20">
-						<Rectangle>
-							<Rectangle.Fill>
-								<LinearGradientBrush x:Name="PalleteRainbow" StartPoint="0,0.5" EndPoint="1,0.5">
-									<GradientStop Color="Black" Offset="1.00000" />
-									<GradientStop Color="DarkBlue" Offset="0.90000" />
-									<GradientStop Color="Purple" Offset="0.80000" />
-									<GradientStop Color="#9ED9F7" Offset="0.70000" />
-									<GradientStop Color="#7AC043" Offset="0.60000" />
-									<GradientStop Color="#F9E97A" Offset="0.40000" />
-									<GradientStop Color="#F37737" Offset="0.20000" />
-									<GradientStop Color="#EE4035" Offset="0.00000" />
-								</LinearGradientBrush>
-							</Rectangle.Fill>
-						</Rectangle>
-					</ComboBoxItem>
-					<ComboBoxItem Height="20">
-						<Rectangle>
-							<Rectangle.Fill>
-								<LinearGradientBrush x:Name="PalleteBlackBody" StartPoint="0,0.5" EndPoint="1,0.5">
-									<GradientStop Color="#000000" Offset="1.00000" />
-									<GradientStop Color="#F82600" Offset="0.88888" />
-									<GradientStop Color="#FC7700" Offset="0.77777" />
-									<GradientStop Color="#FFAB1F" Offset="0.66666" />
-									<GradientStop Color="#FFC360" Offset="0.55555" />
-									<GradientStop Color="#FFDDA4" Offset="0.44444" />
-									<GradientStop Color="#FFF4E4" Offset="0.33333" />
-									<GradientStop Color="#E8EDFF" Offset="0.22222" />
-									<GradientStop Color="#DBE3FF" Offset="0.11111" />
-									<GradientStop Color="#CBD7FF" Offset="0.00000" />
-								</LinearGradientBrush>
-							</Rectangle.Fill>
-						</Rectangle>
-					</ComboBoxItem>
-					<ComboBoxItem Height="20">
-						<Rectangle>
-							<Rectangle.Fill>
-								<LinearGradientBrush x:Name="PalleteOpacity" StartPoint="0,0.5" EndPoint="1,0.5">
-									<GradientStop Color="#00FFFFFF" Offset="0" />
-									<GradientStop Color="#FF000000" Offset="1" />
-								</LinearGradientBrush>
-							</Rectangle.Fill>
-						</Rectangle>
-					</ComboBoxItem>
-				</ComboBox>
-				<TextBlock
-					Margin="0,5,0,0"
-					Text="Дистанция Градиента"
-					Style="{StaticResource TextBlockStyleSmallSubHeader}">
-				</TextBlock>
-				<xctk:IntegerUpDown
-					Value="{Binding Path=PointGradientRadius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-					Minimum="1" Maximum="100">
-				</xctk:IntegerUpDown>
-				<TextBlock
-					Margin="0,5,0,0"
-					Text="Дистанция Перекрытия"
-					Style="{StaticResource TextBlockStyleSmallSubHeader}">
-				</TextBlock>
-				<xctk:IntegerUpDown
-					Value="{Binding Path=PointOverlapRadius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-					Minimum="0" Maximum="50">
-				</xctk:IntegerUpDown>
-				<Button Grid.Row="3" Grid.ColumnSpan="2" Click="ClearHeatClick" Style="{StaticResource LinkButton}" HorizontalAlignment="Left" Margin="0,25,0,0">Очистить</Button>
-			</StackPanel>
-		</ScrollViewer>
+        <ScrollViewer
+            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top"
+            HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Данные" Style="{StaticResource TextBlockStyleSubHeader}" />
+                <Button
+                    Content="Импортировать файл(ы)"
+                    Command="{Binding Path=ImportFileCommand, Mode=OneWay}"
+                    Style="{StaticResource LinkButton}">
+                </Button>
+                <TextBlock
+                    Text="{Binding Path=LoadedDataInfo, Mode=OneWay}"
+                    Style="{StaticResource TextBlockStyleBodyText}"
+                    TextWrapping="Wrap">
+                </TextBlock>
 
-		<GridSplitter Grid.Column="0" Style="{StaticResource VerticalGridSplitter}" />
+                <TextBlock Text="Фильтрация" Style="{StaticResource TextBlockStyleSubHeader}" />
+                <TextBlock Text="Регион" Style="{StaticResource TextBlockStyleSmallSubHeader}" />
+                <ComboBox
+                    DisplayMemberPath="DisplayName"
+                    ItemsSource="{Binding Path=RegionSelector, Mode=OneWay}"
+                    SelectedItem="{Binding Path=RegionSelector.SelectedItem, Mode=TwoWay}">
+                </ComboBox>
+                <TextBlock Text="События" Style="{StaticResource TextBlockStyleSmallSubHeader}" />
+                <ComboBox
+                    DisplayMemberPath="DisplayValue"
+                    ItemsSource="{Binding Path=EventTypeSelector, Mode=OneWay}"
+                    SelectedItem="{Binding Path=EventTypeSelector.SelectedItem, Mode=TwoWay}">
+                </ComboBox>
+                <TextBlock
+                    Text="{Binding Path=FilteredDataInfo, Mode=OneWay}"
+                    Style="{StaticResource TextBlockStyleBodyText}"
+                    TextWrapping="Wrap">
+                </TextBlock>
 
-		<ScrollViewer
-			Grid.Column="1" Margin="0,0,5,0"
-			HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
-			HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-			<Grid HorizontalAlignment="Left" VerticalAlignment="Top">
-				<Border
-					VerticalAlignment="Top" HorizontalAlignment="Left">
-					<Image x:Name="BackgroundImage">
-					</Image>
-				</Border>
-				<Border
-					VerticalAlignment="Top" HorizontalAlignment="Left"
-					Opacity="{Binding Path=HeatMapOpacity, Mode=OneWay}">
-					<Image x:Name="HeatImage">
-						<Image.Effect>
-							<effects:HeatColorizer x:Name="HeatEffect" />
-						</Image.Effect>
-					</Image>
-				</Border>
-			</Grid>
-		</ScrollViewer>
+                <TextBlock Text="Визуализация" Style="{StaticResource TextBlockStyleSubHeader}" />
+                <TextBlock Text="Прозрачность" Style="{StaticResource TextBlockStyleSmallSubHeader}" />
+                <xctk:DoubleUpDown
+                    Value="{Binding Path=HeatMapOpacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Increment="0.05"  Minimum="0" Maximum="1">
+                </xctk:DoubleUpDown>
+                <TextBlock Text="Палитра" Style="{StaticResource TextBlockStyleSmallSubHeader}" />
+                <ComboBox
+                    x:Name="PalleteSelector"
+                    Height="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                    <ComboBoxItem Height="20">
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <LinearGradientBrush x:Name="PalleteRainbow" StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="Black" Offset="1.00000" />
+                                    <GradientStop Color="DarkBlue" Offset="0.90000" />
+                                    <GradientStop Color="Purple" Offset="0.80000" />
+                                    <GradientStop Color="#9ED9F7" Offset="0.70000" />
+                                    <GradientStop Color="#7AC043" Offset="0.60000" />
+                                    <GradientStop Color="#F9E97A" Offset="0.40000" />
+                                    <GradientStop Color="#F37737" Offset="0.20000" />
+                                    <GradientStop Color="#EE4035" Offset="0.00000" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </ComboBoxItem>
+                    <ComboBoxItem Height="20">
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <LinearGradientBrush x:Name="PalleteBlackBody" StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="#000000" Offset="1.00000" />
+                                    <GradientStop Color="#F82600" Offset="0.88888" />
+                                    <GradientStop Color="#FC7700" Offset="0.77777" />
+                                    <GradientStop Color="#FFAB1F" Offset="0.66666" />
+                                    <GradientStop Color="#FFC360" Offset="0.55555" />
+                                    <GradientStop Color="#FFDDA4" Offset="0.44444" />
+                                    <GradientStop Color="#FFF4E4" Offset="0.33333" />
+                                    <GradientStop Color="#E8EDFF" Offset="0.22222" />
+                                    <GradientStop Color="#DBE3FF" Offset="0.11111" />
+                                    <GradientStop Color="#CBD7FF" Offset="0.00000" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </ComboBoxItem>
+                    <ComboBoxItem Height="20">
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <LinearGradientBrush x:Name="PalleteOpacity" StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="#00FFFFFF" Offset="0" />
+                                    <GradientStop Color="#FF000000" Offset="1" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </ComboBoxItem>
+                </ComboBox>
+                <TextBlock Text="Дистанция Градиента" Style="{StaticResource TextBlockStyleSmallSubHeader}" />
+                <xctk:IntegerUpDown
+                    Value="{Binding Path=PointGradientRadius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Minimum="1" Maximum="100">
+                </xctk:IntegerUpDown>
+                <TextBlock Text="Дистанция Перекрытия" Style="{StaticResource TextBlockStyleSmallSubHeader}" />
+                <xctk:IntegerUpDown
+                    Value="{Binding Path=PointOverlapRadius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Minimum="0" Maximum="50">
+                </xctk:IntegerUpDown>
+                <Button
+                    Content="Очистить"
+                    Click="ClearHeatClick"
+                    Style="{StaticResource LinkButton}"
+                    HorizontalAlignment="Left" Margin="0,25,0,0">
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
 
-	</Grid>
+        <GridSplitter Grid.Column="0" Style="{StaticResource VerticalGridSplitter}" />
+
+        <ScrollViewer
+            Grid.Column="1" Margin="0,0,5,0"
+            HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
+            HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Border
+                    VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Image x:Name="BackgroundImage" />
+                </Border>
+                <Border
+                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                    Opacity="{Binding Path=HeatMapOpacity, Mode=OneWay}">
+                    <Image x:Name="HeatImage">
+                        <Image.Effect>
+                            <effects:HeatColorizer x:Name="HeatEffect" />
+                        </Image.Effect>
+                    </Image>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
 
 </UserControl>
