@@ -9,86 +9,86 @@
 	xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 	mc:Ignorable="d"
 	d:DesignHeight="600" d:DesignWidth="600">
-	<UserControl.Background>
-		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-			<GradientStop Color="#FFDDDDDD" Offset="1"/>
-			<GradientStop Color="#FFEEEEEE"/>
-		</LinearGradientBrush>
-	</UserControl.Background>
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFDDDDDD" Offset="1"/>
+            <GradientStop Color="#FFEEEEEE"/>
+        </LinearGradientBrush>
+    </UserControl.Background>
 
-	<Grid>
+    <Grid>
 
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="Auto" MinWidth="200" MaxWidth="400" />
-			<ColumnDefinition Width="3*" MinWidth="200" />
-		</Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="200" MaxWidth="400" />
+            <ColumnDefinition Width="3*" MinWidth="200" />
+        </Grid.ColumnDefinitions>
 
-		<ScrollViewer
+        <ScrollViewer
 			Margin="0,0,5,0"
 			HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top">
-			<StackPanel
+            <StackPanel
 				Margin="5,5,5,5">
-				<TextBlock
+                <TextBlock
 					Text="Данные"
 					Style="{StaticResource TextBlockStyleSubHeader}">
-				</TextBlock>
-				<TextBlock
+                </TextBlock>
+                <TextBlock
 					Margin="0,5,0,0"
 					Text="{Binding Path=DataStatusString, Mode=OneWay}"
 					Style="{StaticResource TextBlockStyleBodyText}"
 					TextWrapping="Wrap">
-				</TextBlock>
-				<Button
+                </TextBlock>
+                <Button
 					Margin="0,5,0,0"
 					Content="Импортировать файл(ы)"
 					Command="{Binding Path=ImportDataFromFileCommand, Mode=OneWay}"
 					Style="{StaticResource LinkButton}"
 					HorizontalAlignment="Left">
-				</Button>
+                </Button>
 
-				<TextBlock
+                <TextBlock
 					Text="Визуализация"
 					Margin="0,20,0,0"
 					Style="{StaticResource TextBlockStyleSubHeader}">
-				</TextBlock>
-				<TextBlock
+                </TextBlock>
+                <TextBlock
 					Margin="0,5,0,0"
 					Text="Регион"
 					Style="{StaticResource TextBlockStyleSmallSubHeader}">
-				</TextBlock>
-				<ComboBox
+                </TextBlock>
+                <ComboBox
 					Margin="0,5,0,0"
 					DisplayMemberPath="DisplayName"
 					ItemsSource="{Binding Path=RegionSelector, Mode=OneWay}"
 					SelectedItem="{Binding Path=RegionSelector.SelectedItem, Mode=TwoWay}">
-				</ComboBox>
-				<TextBlock
+                </ComboBox>
+                <TextBlock
 					Margin="0,5,0,0"
 					Text="{Binding Path=FilteredDataStatusString, Mode=OneWay}"
 					Style="{StaticResource TextBlockStyleBodyText}"
 					TextWrapping="Wrap">
-				</TextBlock>
-				<Button
+                </TextBlock>
+                <Button
 					Margin="0,5,0,0"
 					Content="Тепловая Карта (Кликов)"
 					Command="{Binding Path=OpenClickHeatMapTabCommand, Mode=OneWay}"
 					Style="{StaticResource LinkButton}"
 					HorizontalAlignment="Left">
-				</Button>
-				<Button
+                </Button>
+                <Button
 					Margin="0,5,0,0"
 					Content="Тепловая Карта (Движений)"
 					Command="{Binding Path=OpenMovementHeatMapTabCommand, Mode=OneWay}"
 					Style="{StaticResource LinkButton}"
 					HorizontalAlignment="Left">
-				</Button>
-				<Button
+                </Button>
+                <Button
 					Margin="0,5,0,0"
 					Content="Тепловая Карта (Тестовая)"
 					Command="{Binding Path=OpenTestHeatMapTabCommand, Mode=OneWay}"
 					Style="{StaticResource LinkButton}"
 					HorizontalAlignment="Left">
-				</Button>
+                </Button>
                 <Button
 					Margin="0,5,0,0"
 					Content="Последовательные Шаблоны"
@@ -104,9 +104,9 @@
 					HorizontalAlignment="Left">
                 </Button>
             </StackPanel>
-		</ScrollViewer>
+        </ScrollViewer>
 
-		<GridSplitter Grid.Column="0" Style="{StaticResource VerticalGridSplitter}" />
+        <GridSplitter Grid.Column="0" Style="{StaticResource VerticalGridSplitter}" />
 
         <TabControl
 			x:Name="ComponentsRegion"

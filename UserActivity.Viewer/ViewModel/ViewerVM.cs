@@ -96,11 +96,7 @@ namespace UserActivity.Viewer.ViewModel
         public RelayCommand<ComponentVM> CloseComponentCommand => new RelayCommand<ComponentVM>(ExecuteCloseComponent);
 
         private List<SessionGroup> SessionGroups => new List<SessionGroup>();
-        public SelectableCollection<RegionImageItemVM> RegionSelector
-        {
-            get;
-            private set;
-        }
+        public SelectableCollection<RegionImageItemVM> RegionSelector { get; private set; }
         public SelectableCollection<ComponentVM> Components { get; private set; }
 
         private bool IsRegionSelected()

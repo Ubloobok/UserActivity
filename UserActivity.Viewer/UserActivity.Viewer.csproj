@@ -101,6 +101,8 @@
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Implements\SelectableCollection.cs" />
+    <Compile Include="Patterns\PatternExtensions.cs" />
+    <Compile Include="Patterns\PatternHelper.cs" />
     <Compile Include="View\SequentialPatternView.xaml.cs">
       <DependentUpon>SequentialPatternView.xaml</DependentUpon>
     </Compile>
