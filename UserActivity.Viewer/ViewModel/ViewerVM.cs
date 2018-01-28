@@ -120,16 +120,7 @@ namespace UserActivity.Viewer.ViewModel
 
         private void ExecuteOpenActivitiesDataGrid()
         {
-            var vm = CreateComponent<ActivitiesDataGridVM, ActivitiesDataGridView>();
-
-            var region = RegionSelector.SelectedItem;
-            var activities = SessionGroups
-                .SelectMany(sg => sg.Sessions
-                    .SelectMany(s => s.ActivityCollection
-                        .Where(a => a.RegionName == region.RegionName
-                            && a.ImageName == region.ImageName)));
-            vm.Initialize(region, activities);
-
+            var vm = CreateComponent<EventListVM, EventListView>();
             OpenComponent(vm);
         }
 

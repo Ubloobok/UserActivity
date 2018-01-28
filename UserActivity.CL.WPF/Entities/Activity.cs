@@ -23,7 +23,10 @@ namespace UserActivity.CL.WPF.Entities
 			set;
 		}
 
-		[XmlAttribute("UtcDateTime")]
+        [XmlIgnore]
+        public DateTime? LocalDateTime => UtcDateTime.HasValue ? UtcDateTime.Value.ToLocalTime() : (DateTime?)null;
+
+        [XmlAttribute("UtcDateTime")]
 		public string UtcDateTimeString
 		{
 			get { return UtcDateTime.HasValue ? UtcDateTime.Value.ToString(DateTimeFormat) : null; }

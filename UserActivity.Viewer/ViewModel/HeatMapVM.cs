@@ -9,11 +9,15 @@ using System.Xml.Serialization;
 using UserActivity.CL.WPF.Entities;
 using UserActivity.CL.WPF.Services;
 using UserActivity.Viewer.Implements;
+using UserActivity.Viewer.Services;
 using UserActivity.Viewer.View;
 using UserActivity.Viewer.ViewModel.Items;
 
 namespace UserActivity.Viewer.ViewModel
 {
+    /// <summary>
+    /// Heat map view model.
+    /// </summary>
     public class HeatMapVM : ComponentVM
     {
         const string DataStatusStringFormat = "Файлов: {0}, Сессий: {1}, Событий: {2}";
@@ -23,11 +27,14 @@ namespace UserActivity.Viewer.ViewModel
         int _pointOverlapRadius;
         string _loadedDataInfo;
         string _filteredDataInfo;
+        DataImportService _import = DataImportService.Create();
 
         /// <summary>Ctor.</summary>
         public HeatMapVM()
         {
             Header = "Тепловая Карта";
+            LoadedDataInfo = string.Format(DataStatusStringFormat, 0, 0, 0);
+            FilteredDataInfo = string.Format(DataStatusStringFormat, 0, 0, 0);
             HeatMapOpacity = 0.75;
             PointGradientRadius = 40;
             PointOverlapRadius = 10;
@@ -38,6 +45,9 @@ namespace UserActivity.Viewer.ViewModel
             EventTypeSelector.SelectedItemChanged += OnSelectedEventTypeChanged;
         }
 
+        /// <summary>
+        /// On selected region changed.
+        /// </summary>
         private void OnSelectedRegionChanged(object sender, EventArgs e)
         {
             var region = RegionSelector.SelectedItem;
@@ -48,13 +58,16 @@ namespace UserActivity.Viewer.ViewModel
             EventTypeSelector.SelectedItem = EventTypeSelector.First();
         }
 
+        /// <summary>
+        /// On selected event type changed.
+        /// </summary>
         private void OnSelectedEventTypeChanged(object sender, EventArgs e)
         {
             var region = RegionSelector.SelectedItem;
             var type = EventTypeSelector.SelectedItem?.Value;
             if ((region != null) && (type != ActivityKind.Unknown))
             {
-                var activities = SessionGroups
+                var activities = Files
                     .SelectMany(sg => sg.Sessions
                         .SelectMany(s => s.ActivityCollection
                             .Where(a => a.RegionName == region.RegionName
@@ -62,19 +75,19 @@ namespace UserActivity.Viewer.ViewModel
                                 && a.Kind == type)));
                 ((HeatMapView)View).SetActivities(activities);
 
-                int fileCount = SessionGroups
+                int fileCount = Files
                     .Where(sg => sg.Sessions
                         .Any(s => s.ActivityCollection
                             .Any(a => a.RegionName == region.RegionName && a.ImageName == region.ImageName
                                 && a.Kind == type)))
                     .Count();
-                int sessionCount = SessionGroups
+                int sessionCount = Files
                     .Sum(sg => sg.Sessions
                         .Where(s => s.ActivityCollection
                             .Any(a => a.RegionName == region.RegionName && a.ImageName == region.ImageName
                                 && a.Kind == type))
                         .Count());
-                int eventCount = SessionGroups
+                int eventCount = Files
                     .Sum(sg => sg.Sessions
                         .Sum(s => s.ActivityCollection
                             .Where(a => a.RegionName == region.RegionName && a.ImageName == region.ImageName
@@ -88,12 +101,16 @@ namespace UserActivity.Viewer.ViewModel
             }
         }
 
+        /// <summary>Import file command.</summary>
         public RelayCommand ImportFileCommand => new RelayCommand(ExecuteImportFile);
 
-        private List<SessionGroup> SessionGroups { get; } = new List<SessionGroup>();
+        /// <summary>All loaded data.</summary>
+        private List<SessionGroup> Files { get; } = new List<SessionGroup>();
 
+        /// <summary>Selected region.</summary>
         public SelectableCollection<RegionImageItemVM> RegionSelector { get; } = new SelectableCollection<RegionImageItemVM>();
 
+        /// <summary>Selected event type.</summary>
         public SelectableCollection<CollectionItem<ActivityKind>> EventTypeSelector { get; } = new SelectableCollection<CollectionItem<ActivityKind>>();
 
         /// <summary>Heatmap opacity.</summary>
@@ -136,44 +153,34 @@ namespace UserActivity.Viewer.ViewModel
         /// </summary>
         private void ExecuteImportFile()
         {
-            var openFileDialog = new OpenFileDialog()
+            var groups = _import.ImportFile();
+            Files.AddRange(groups);
+
+            var newRegions = new List<RegionImageItemVM>();
+            foreach (var region in Files.SelectMany(sg => sg.Sessions).SelectMany(s => s.RegionCollection))
             {
-                Filter = string.Format("UAD-файлы (*.{0})|*.{0}", XmlUserActivityDataContext.UadFileExtension),
-                Multiselect = true,
-            };
-            bool? result = openFileDialog.ShowDialog();
-            if (result == true)
-            {
-                foreach (var stream in openFileDialog.OpenFiles())
+                foreach (var image in region.Images)
                 {
-                    using (stream)
+                    if (newRegions.FirstOrDefault(r => r.RegionName == region.Name && r.ImageName == image.Name) == null)
                     {
-                        var sessionGroup = XmlUserActivityDataContext.LoadSessionGroup(stream);
-                        SessionGroups.Add(sessionGroup);
+                        var newRegion = new RegionImageItemVM() { RegionName = region.Name, Image = image };
+                        newRegions.Add(newRegion);
                     }
                 }
-
-                var newRegions = new List<RegionImageItemVM>();
-                foreach (var region in SessionGroups.SelectMany(sg => sg.Sessions).SelectMany(s => s.RegionCollection))
-                {
-                    foreach (var image in region.Images)
-                    {
-                        if (newRegions.FirstOrDefault(r => r.RegionName == region.Name && r.ImageName == image.Name) == null)
-                        {
-                            var newRegion = new RegionImageItemVM() { RegionName = region.Name, Image = image };
-                            newRegions.Add(newRegion);
-                        }
-                    }
-                }
-
-                RegionSelector.Clear();
-                RegionSelector.AddRange(newRegions.OrderBy(r => r.RegionName));
-                RegionSelector.SelectedItem = RegionSelector.FirstOrDefault();
             }
 
-            int fileCount = SessionGroups.Count;
-            int sessionCount = SessionGroups.Sum(sg => sg.Sessions.Count);
-            int eventCount = SessionGroups.Sum(sg => sg.Sessions.Sum(a => a.ActivityCollection.Count));
+            //var regions = Files.SelectMany(sg => sg.Sessions)
+            //    .SelectMany(s => s.RegionCollection)
+            //    .SelectMany(r => r.Images.Select(v => new { r, v }))
+            //    .DistinctBy((r1, r2) => r1.r.Name == r2.r.Name && r1.v.Name == r2.v.Name);
+
+            RegionSelector.Clear();
+            RegionSelector.AddRange(newRegions.OrderBy(r => r.RegionName));
+            RegionSelector.SelectedItem = RegionSelector.FirstOrDefault();
+
+            int fileCount = Files.Count;
+            int sessionCount = Files.Sum(sg => sg.Sessions.Count);
+            int eventCount = Files.Sum(sg => sg.Sessions.Sum(a => a.ActivityCollection.Count));
             LoadedDataInfo = string.Format(DataStatusStringFormat, fileCount, sessionCount, eventCount);
         }
 

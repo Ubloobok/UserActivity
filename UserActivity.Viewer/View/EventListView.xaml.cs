@@ -16,16 +16,18 @@ using UserActivity.Viewer.ViewModel;
 
 namespace UserActivity.Viewer.View
 {
-	/// <summary>
-	/// Interaction logic for ActivitiesDataGridView.xaml
-	/// </summary>
-	public partial class ActivitiesDataGridView : UserControl
-	{
-		public ActivitiesDataGridView()
-		{
-			InitializeComponent();
-		}
+    /// <summary>
+    /// Event list view.
+    /// </summary>
+    public partial class EventListView : UserControl
+    {
+        /// <summary>Ctor.</summary>
+        public EventListView()
+        {
+            InitializeComponent();
+        }
 
-        public ActivitiesDataGridVM ViewModel => DataContext as ActivitiesDataGridVM;
-	}
+        /// <summary>View model from data context.</summary>
+        public EventListVM ViewModel => DataContext as EventListVM;
+    }
 }

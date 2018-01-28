@@ -118,8 +118,7 @@
                 <Button
                     Content="Очистить"
                     Click="ClearHeatClick"
-                    Style="{StaticResource LinkButton}"
-                    HorizontalAlignment="Left" Margin="0,25,0,0">
+                    Style="{StaticResource LinkButton}">
                 </Button>
             </StackPanel>
         </ScrollViewer>
