@@ -111,10 +111,6 @@ namespace UserActivity.Viewer.ViewModel
         private void ExecuteOpenSequentialPattern()
         {
             var vm = CreateComponent<SequentialPatternVM, SequentialPatternView>();
-
-            var activities = SessionGroups.SelectMany(sg => sg.Sessions.SelectMany(s => s.ActivityCollection));
-            vm.Initialize(activities);
-
             OpenComponent(vm);
         }
 

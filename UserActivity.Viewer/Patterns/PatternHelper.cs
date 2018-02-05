@@ -8,25 +8,25 @@ namespace UserActivity.Viewer.Patterns
 {
     public class PatternHelper
     {
-        public static int[] SelectClasses(int[][] sessions)
+        public static string[] SelectClasses(string[][] sessions)
         {
             var classes = sessions.DistinctMany();
             return classes;
         }
 
-        public static int[][] GeneratePatterns(int[] classes, int minLen, int maxLen)
+        public static string[][] GeneratePatterns(string[] classes, int minLen, int maxLen)
         {
             var patterns = classes.Variations(minLen, maxLen);
             return patterns;
         }
 
-        public static int CalculateCount(int[] pattern, int[][] sessions)
+        public static int CalculateCount(string[] pattern, string[][] sessions)
         {
             int sum = sessions.Sum(s => s.Count(pattern));
             return sum;
         }
 
-        public static double CalculateSupport(int[] pattern, int[][] sessions)
+        public static double CalculateSupport(string[] pattern, string[][] sessions)
         {
             int total = sessions.Sum(s => s.Length);
             int sum = sessions.Sum(s => s.Count(pattern));

@@ -65,5 +65,10 @@ namespace UserActivity.Viewer.Implements
         /// SelectedItem property was changed.
         /// </summary>
         public event EventHandler SelectedItemChanged;
+
+        /// <summary>
+        /// Select first element of the collection.
+        /// </summary>
+        public void SelectFirst() => SelectedItem = this.FirstOrDefault();
     }
 }

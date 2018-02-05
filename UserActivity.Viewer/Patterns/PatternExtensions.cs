@@ -8,9 +8,9 @@ namespace UserActivity.Viewer.Patterns
 {
     public static class PatternExtensions
     {
-        public static int[] DistinctMany(this IEnumerable<int[]> arrays)
+        public static string[] DistinctMany(this IEnumerable<string[]> arrays)
         {
-            int[] result = arrays
+            string[] result = arrays
                 .SelectMany(s => s)
                 .Distinct()
                 .OrderBy(c => c)
@@ -18,9 +18,9 @@ namespace UserActivity.Viewer.Patterns
             return result;
         }
 
-        public static int[][] Variations(this int[] items, int minLen, int maxLen)
+        public static string[][] Variations(this string[] items, int minLen, int maxLen)
         {
-            List<int[]> variations = new List<int[]>();
+            List<string[]> variations = new List<string[]>();
             for (int len = minLen; len <= maxLen; len++)
             {
                 var temp = Enumerable
@@ -46,7 +46,7 @@ namespace UserActivity.Viewer.Patterns
                 );
         }
 
-        private static bool IsSubArrayEqual(int[] array, int[] subarray, int startIndex)
+        private static bool IsSubArrayEqual(string[] array, string[] subarray, int startIndex)
         {
             for (int i = 0; i < subarray.Length; i++)
             {
@@ -55,7 +55,7 @@ namespace UserActivity.Viewer.Patterns
             return true;
         }
 
-        public static int IndexOf(this int[] array, int[] subarray)
+        public static int IndexOf(this string[] array, string[] subarray)
         {
             int max = 1 + array.Length - subarray.Length;
             for (int i = 0; i < max; i++)
@@ -68,7 +68,7 @@ namespace UserActivity.Viewer.Patterns
             return -1;
         }
 
-        public static int Count(this int[] array, int[] subarray)
+        public static int Count(this string[] array, string[] subarray)
         {
             int max = array.Length - subarray.Length + 1;
             int count = 0;

@@ -55,7 +55,7 @@ namespace UserActivity.Viewer.ViewModel
             {
                 ((HeatMapView)View).SetRegion(region);
             }
-            EventTypeSelector.SelectedItem = EventTypeSelector.First();
+            EventTypeSelector.SelectFirst();
         }
 
         /// <summary>
@@ -108,10 +108,12 @@ namespace UserActivity.Viewer.ViewModel
         private List<SessionGroup> Files { get; } = new List<SessionGroup>();
 
         /// <summary>Selected region.</summary>
-        public SelectableCollection<RegionImageItemVM> RegionSelector { get; } = new SelectableCollection<RegionImageItemVM>();
+        public SelectableCollection<RegionImageItemVM> RegionSelector { get; } =
+            new SelectableCollection<RegionImageItemVM>();
 
         /// <summary>Selected event type.</summary>
-        public SelectableCollection<CollectionItem<ActivityKind>> EventTypeSelector { get; } = new SelectableCollection<CollectionItem<ActivityKind>>();
+        public SelectableCollection<CollectionItem<ActivityKind>> EventTypeSelector { get; }
+            = new SelectableCollection<CollectionItem<ActivityKind>>();
 
         /// <summary>Heatmap opacity.</summary>
         public double HeatMapOpacity
@@ -176,7 +178,7 @@ namespace UserActivity.Viewer.ViewModel
 
             RegionSelector.Clear();
             RegionSelector.AddRange(newRegions.OrderBy(r => r.RegionName));
-            RegionSelector.SelectedItem = RegionSelector.FirstOrDefault();
+            RegionSelector.SelectFirst();
 
             int fileCount = Files.Count;
             int sessionCount = Files.Sum(sg => sg.Sessions.Count);
