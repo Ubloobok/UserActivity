@@ -29,9 +29,9 @@ namespace UserActivity.Viewer.ViewModel
             LoadedDataInfo = string.Format(DataStatusStringFormat, 0, 0, 0);
             FilteredDataInfo = string.Format(DataStatusStringFormat, 0, 0, 0);
 
-            EventTypeSelector.Add(ActivityKind.Unknown, "Любой");
-            EventTypeSelector.Add(ActivityKind.Click, "Клики Мыши");
-            EventTypeSelector.Add(ActivityKind.Movement, "Движения Мыши");
+            EventTypeSelector.Add(EventKind.Unknown, "Любой");
+            EventTypeSelector.Add(EventKind.Click, "Клики Мыши");
+            EventTypeSelector.Add(EventKind.Movement, "Движения Мыши");
             EventTypeSelector.SelectedItemChanged += OnSelectedEventTypeChanged;
         }
 
@@ -42,15 +42,15 @@ namespace UserActivity.Viewer.ViewModel
         private List<SessionGroup> Files { get; set; } = new List<SessionGroup>();
 
         /// <summary>All loaded events.</summary>
-        public ObservableCollection<Activity> Events { get; private set; } = new ObservableCollection<Activity>();
+        public ObservableCollection<Event> Events { get; private set; } = new ObservableCollection<Event>();
 
         /// <summary>Selected region.</summary>
         public SelectableCollection<RegionImageItemVM> RegionSelector { get; }
             = new SelectableCollection<RegionImageItemVM>();
 
         /// <summary>Selected event type.</summary>
-        public SelectableCollection<CollectionItem<ActivityKind>> EventTypeSelector { get; }
-            = new SelectableCollection<CollectionItem<ActivityKind>>();
+        public SelectableCollection<CollectionItem<EventKind>> EventTypeSelector { get; }
+            = new SelectableCollection<CollectionItem<EventKind>>();
 
         /// <summary>All data status string property.</summary>
         public string LoadedDataInfo
@@ -76,7 +76,7 @@ namespace UserActivity.Viewer.ViewModel
 
             int fileCount = Files.Count;
             int sessionCount = Files.Sum(sg => sg.Sessions.Count);
-            int eventCount = Files.Sum(sg => sg.Sessions.Sum(a => a.ActivityCollection.Count));
+            int eventCount = Files.Sum(sg => sg.Sessions.Sum(a => a.Events.Count));
             LoadedDataInfo = string.Format(DataStatusStringFormat, fileCount, sessionCount, eventCount);
 
             EventTypeSelector.SelectedItem = EventTypeSelector.First();
@@ -90,31 +90,31 @@ namespace UserActivity.Viewer.ViewModel
             var type = EventTypeSelector.SelectedItem?.Value;
             var events = Files
                 .SelectMany(g => g.Sessions
-                    .SelectMany(s => s.ActivityCollection
-                        .Where(a => type == ActivityKind.Unknown || a.Kind == type)));
+                    .SelectMany(s => s.Events
+                        .Where(a => type == EventKind.Unknown || a.Kind == type)));
 
             Events.Clear();
             Events.AddRange(events);
 
             var activities = Files
                 .SelectMany(sg => sg.Sessions
-                    .SelectMany(s => s.ActivityCollection
-                        .Where(a => type == ActivityKind.Unknown || a.Kind == type)));
+                    .SelectMany(s => s.Events
+                        .Where(a => type == EventKind.Unknown || a.Kind == type)));
 
             int fileCount = Files
                 .Where(sg => sg.Sessions
-                    .Any(s => s.ActivityCollection
-                        .Any(a => type == ActivityKind.Unknown || a.Kind == type)))
+                    .Any(s => s.Events
+                        .Any(a => type == EventKind.Unknown || a.Kind == type)))
                 .Count();
             int sessionCount = Files
                 .Sum(sg => sg.Sessions
-                    .Where(s => s.ActivityCollection
-                        .Any(a => type == ActivityKind.Unknown || a.Kind == type))
+                    .Where(s => s.Events
+                        .Any(a => type == EventKind.Unknown || a.Kind == type))
                     .Count());
             int eventCount = Files
                 .Sum(sg => sg.Sessions
-                    .Sum(s => s.ActivityCollection
-                        .Where(a => type == ActivityKind.Unknown || a.Kind == type)
+                    .Sum(s => s.Events
+                        .Where(a => type == EventKind.Unknown || a.Kind == type)
                         .Count()));
             FilteredDataInfo = string.Format(DataStatusStringFormat, fileCount, sessionCount, eventCount);
         }

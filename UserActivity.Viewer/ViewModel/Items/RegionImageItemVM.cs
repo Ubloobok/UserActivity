@@ -10,7 +10,7 @@ namespace UserActivity.Viewer.ViewModel.Items
 	public class RegionImageItemVM
 	{
 		public string RegionName { get; set; }
-		public Image Image { get; set; }
+		public Variation Image { get; set; }
 
 		public string ImageName
 		{

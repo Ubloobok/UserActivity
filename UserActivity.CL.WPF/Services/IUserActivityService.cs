@@ -8,15 +8,15 @@ using UserActivity.CL.WPF.Entities;
 
 namespace UserActivity.CL.WPF.Services
 {
-	public interface IUserActivityService
-	{
-		Guid? CurrentSessionUID { get; }
-		DateTime? CurrentSessionStartDateTime { get; }
+    public interface IUserActivityService
+    {
+        Guid? CurrentSessionUID { get; }
+        DateTime? CurrentSessionStartDateTime { get; }
 
-		void OpenSession();
-		void CloseAndOpenSession();
-		void CloseSession();
+        void OpenSession();
+        void CloseAndOpenSession();
+        void CloseSession();
 
-		void RegisterActivity(ActivityInfo activityInfo);
-	}
+        void RegisterEvent(EventInfo evInfo);
+    }
 }

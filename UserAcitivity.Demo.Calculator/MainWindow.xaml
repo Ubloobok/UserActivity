@@ -1,0 +1,27 @@
+﻿<Window
+    x:Class="UserAcitivity.Demo.Calculator.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:UserAcitivity.Demo.Calculator"
+    mc:Ignorable="d"
+    xmlns:u="http://schemas.useractivity.com/cl/wpf"
+    Title="MainWindow" Height="350" Width="525"
+    u:UserActivityBehavior.IsEnabled="True"
+    u:UserActivityBehavior.RegionName="MainRegion">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" Margin="10">
+            <Button
+                Name="BtnStart" Width="100" Margin="10"
+                u:UserActivityBehavior.CommandName="Start">
+                Start
+            </Button>
+            <Button
+                Name="BtnStop" Width="100" Margin="10"
+                u:UserActivityBehavior.CommandName="Stop">
+                Stop
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

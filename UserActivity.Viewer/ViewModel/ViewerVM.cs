@@ -60,9 +60,9 @@ namespace UserActivity.Viewer.ViewModel
                 }
 
                 var newRegions = new List<RegionImageItemVM>();
-                foreach (var region in SessionGroups.SelectMany(sg => sg.Sessions).SelectMany(s => s.RegionCollection))
+                foreach (var region in SessionGroups.SelectMany(sg => sg.Sessions).SelectMany(s => s.Regions))
                 {
-                    foreach (var image in region.Images)
+                    foreach (var image in region.Variations)
                     {
                         if (newRegions.FirstOrDefault(r => r.RegionName == region.Name && r.ImageName == image.Name) == null)
                         {

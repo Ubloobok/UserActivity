@@ -59,10 +59,10 @@ namespace UserActivity.Viewer.ViewModel
         }
 
         /// <summary>Selected classification function.</summary>
-        public SelectableCollection<CollectionItem<Func<Activity, IEnumerable<string>>>> ClassFunc { get; }
-            = new SelectableCollection<CollectionItem<Func<Activity, IEnumerable<string>>>>();
+        public SelectableCollection<CollectionItem<Func<Event, IEnumerable<string>>>> ClassFunc { get; }
+            = new SelectableCollection<CollectionItem<Func<Event, IEnumerable<string>>>>();
 
-        private IEnumerable<string> ClassFuncByType(Activity @event)
+        private IEnumerable<string> ClassFuncByType(Event @event)
         {
             yield return @event.Kind.ToString().Substring(0, 1);
         }
@@ -123,7 +123,7 @@ namespace UserActivity.Viewer.ViewModel
 
             int fileCount = Files.Count;
             int sessionCount = Files.Sum(sg => sg.Sessions.Count);
-            int eventCount = Files.Sum(sg => sg.Sessions.Sum(a => a.ActivityCollection.Count));
+            int eventCount = Files.Sum(sg => sg.Sessions.Sum(a => a.Events.Count));
             LoadedDataInfo = string.Format(DataStatusStringFormat, fileCount, sessionCount, eventCount);
 
             ClassFunc.SelectFirst();
@@ -155,7 +155,7 @@ namespace UserActivity.Viewer.ViewModel
         {
             var func = ClassFunc.SelectedItem.Value;
             var sessions = Files.SelectMany(f => f.Sessions)
-                .Select(s => s.ActivityCollection
+                .Select(s => s.Events
                     .SelectMany(e => func(e))
                     .ToArray());
             InputSessions.Clear();

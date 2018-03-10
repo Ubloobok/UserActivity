@@ -40,8 +40,9 @@ namespace UserActivity.Viewer.ViewModel
             PointOverlapRadius = 10;
 
             RegionSelector.SelectedItemChanged += OnSelectedRegionChanged;
-            EventTypeSelector.Add(ActivityKind.Click, "Клики Мыши");
-            EventTypeSelector.Add(ActivityKind.Movement, "Движения Мыши");
+            EventTypeSelector.Add(EventKind.Click, "Клики Мыши");
+            EventTypeSelector.Add(EventKind.Movement, "Движения Мыши");
+            EventTypeSelector.Add(EventKind.Command, "Команды");
             EventTypeSelector.SelectedItemChanged += OnSelectedEventTypeChanged;
         }
 
@@ -65,31 +66,31 @@ namespace UserActivity.Viewer.ViewModel
         {
             var region = RegionSelector.SelectedItem;
             var type = EventTypeSelector.SelectedItem?.Value;
-            if ((region != null) && (type != ActivityKind.Unknown))
+            if ((region != null) && (type != EventKind.Unknown))
             {
                 var activities = Files
                     .SelectMany(sg => sg.Sessions
-                        .SelectMany(s => s.ActivityCollection
+                        .SelectMany(s => s.Events
                             .Where(a => a.RegionName == region.RegionName
                                 && a.ImageName == region.ImageName
                                 && a.Kind == type)));
-                ((HeatMapView)View).SetActivities(activities);
+                ((HeatMapView)View).SetEvents(activities);
 
                 int fileCount = Files
                     .Where(sg => sg.Sessions
-                        .Any(s => s.ActivityCollection
+                        .Any(s => s.Events
                             .Any(a => a.RegionName == region.RegionName && a.ImageName == region.ImageName
                                 && a.Kind == type)))
                     .Count();
                 int sessionCount = Files
                     .Sum(sg => sg.Sessions
-                        .Where(s => s.ActivityCollection
+                        .Where(s => s.Events
                             .Any(a => a.RegionName == region.RegionName && a.ImageName == region.ImageName
                                 && a.Kind == type))
                         .Count());
                 int eventCount = Files
                     .Sum(sg => sg.Sessions
-                        .Sum(s => s.ActivityCollection
+                        .Sum(s => s.Events
                             .Where(a => a.RegionName == region.RegionName && a.ImageName == region.ImageName
                                 && a.Kind == type)
                             .Count()));
@@ -112,8 +113,8 @@ namespace UserActivity.Viewer.ViewModel
             new SelectableCollection<RegionImageItemVM>();
 
         /// <summary>Selected event type.</summary>
-        public SelectableCollection<CollectionItem<ActivityKind>> EventTypeSelector { get; }
-            = new SelectableCollection<CollectionItem<ActivityKind>>();
+        public SelectableCollection<CollectionItem<EventKind>> EventTypeSelector { get; }
+            = new SelectableCollection<CollectionItem<EventKind>>();
 
         /// <summary>Heatmap opacity.</summary>
         public double HeatMapOpacity
@@ -159,9 +160,9 @@ namespace UserActivity.Viewer.ViewModel
             Files.AddRange(groups);
 
             var newRegions = new List<RegionImageItemVM>();
-            foreach (var region in Files.SelectMany(sg => sg.Sessions).SelectMany(s => s.RegionCollection))
+            foreach (var region in Files.SelectMany(sg => sg.Sessions).SelectMany(s => s.Regions))
             {
-                foreach (var image in region.Images)
+                foreach (var image in region.Variations)
                 {
                     if (newRegions.FirstOrDefault(r => r.RegionName == region.Name && r.ImageName == image.Name) == null)
                     {
@@ -182,7 +183,7 @@ namespace UserActivity.Viewer.ViewModel
 
             int fileCount = Files.Count;
             int sessionCount = Files.Sum(sg => sg.Sessions.Count);
-            int eventCount = Files.Sum(sg => sg.Sessions.Sum(a => a.ActivityCollection.Count));
+            int eventCount = Files.Sum(sg => sg.Sessions.Sum(a => a.Events.Count));
             LoadedDataInfo = string.Format(DataStatusStringFormat, fileCount, sessionCount, eventCount);
         }
 

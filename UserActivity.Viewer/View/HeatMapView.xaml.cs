@@ -84,10 +84,10 @@ namespace UserActivity.Viewer.View
             }
         }
 
-        public void SetActivities(IEnumerable<Activity> activities)
+        public void SetEvents(IEnumerable<Event> events)
         {
             _heatPoints.Clear();
-            foreach (var activity in activities)
+            foreach (var activity in events)
             {
                 _heatPoints.Add(new HeatPointItem((int)activity.InRegionX, (int)activity.InRegionY, 255));
             }
@@ -103,7 +103,7 @@ namespace UserActivity.Viewer.View
                 var image = region.Image;
                 ImageSource imageSource = null;
 
-                if ((image.Type == ImageType.FileBmp) || (image.Type == ImageType.FileJpg) || (image.Type == ImageType.FilePng))
+                if ((image.ImageType == ImageType.FileBmp) || (image.ImageType == ImageType.FileJpg) || (image.ImageType == ImageType.FilePng))
                 {
                     var bitmapImage = new BitmapImage();
 
@@ -117,7 +117,7 @@ namespace UserActivity.Viewer.View
 
                     imageSource = bitmapImage;
                 }
-                else if ((image.Type == ImageType.RawBmp) || (image.Type == ImageType.RawJpg) || (image.Type == ImageType.RawPng))
+                else if ((image.ImageType == ImageType.RawBmp) || (image.ImageType == ImageType.RawJpg) || (image.ImageType == ImageType.RawPng))
                 {
                     var bitmapImage = new BitmapImage();
                     using (var mem = new MemoryStream(region.Image.Data))
