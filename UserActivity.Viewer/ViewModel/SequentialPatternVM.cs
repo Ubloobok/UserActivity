@@ -36,7 +36,9 @@ namespace UserActivity.Viewer.ViewModel
             ProcessCommand = new RelayCommand(ExecuteProcessCommand);
 
             ClassFunc.SelectedItemChanged += OnSelectedClassFuncChanged;
-            ClassFunc.Add(ClassFuncByType, "По Типу");
+            ClassFunc.Add(ClassFuncByTypeWithoutCommand, "По Типу без Команд");
+            ClassFunc.Add(ClassFuncByTypeAndCommand, "По Типу и Команде");
+            ClassFunc.Add(ClassFuncByCommand, "Только по Команде");
             TimeFunc.SelectedItemChanged += OnSelectedTimeFuncChanged;
             TimeFunc.Add(TimeFuncKLM, "KLM");
             TimeFunc.Add(TimeFuncTLM, "TLM");
@@ -62,9 +64,23 @@ namespace UserActivity.Viewer.ViewModel
         public SelectableCollection<CollectionItem<Func<Event, IEnumerable<string>>>> ClassFunc { get; }
             = new SelectableCollection<CollectionItem<Func<Event, IEnumerable<string>>>>();
 
-        private IEnumerable<string> ClassFuncByType(Event @event)
+        private IEnumerable<string> ClassFuncByTypeWithoutCommand(Event ev)
         {
-            yield return @event.Kind.ToString().Substring(0, 1);
+            if (ev.Kind != EventKind.Command)
+                yield return ev.Kind.ToString().Substring(0, 3);
+        }
+
+        private IEnumerable<string> ClassFuncByTypeAndCommand(Event ev)
+        {
+            if (ev.Kind == EventKind.Command)
+                yield return ev.CommandName;
+            else yield return ev.Kind.ToString().Substring(0, 3);
+        }
+
+        private IEnumerable<string> ClassFuncByCommand(Event ev)
+        {
+            if (ev.Kind == EventKind.Command)
+                yield return ev.CommandName;
         }
 
         /// <summary>Input data.</summary>
@@ -227,6 +243,14 @@ namespace UserActivity.Viewer.ViewModel
             ob.AppendLine("Взв.сумма поддержка: " + Math.Round(sumWeightedSup, 5));
             double sumAvgSup = results.Sum(_ => _.Support) / results.Where(p => p.Support > 0).Count();
             ob.AppendLine("Сред.сумма поддержка: " + Math.Round(sumAvgSup, 5));
+
+            ob.AppendLine("Затраченное время:");
+            var func = TimeFunc.SelectedItem.Value;
+            for (int i = 0; i < InputSessions.Count; i++)
+            {
+                var time = InputSessions[i].Sum(e => func(e));
+                ob.AppendLine($"Сессия #{i + 1}: {time}");
+            }
 
             OutputData = ob.ToString();
         }
