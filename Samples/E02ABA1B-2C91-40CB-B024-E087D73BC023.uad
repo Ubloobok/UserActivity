@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<SessionGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Sessions>
+    <Session UID="E02ABA1B-2C91-40CB-B024-E087D73BC023" UtcStartDateTime="2018.03.10 16:24:13" UtcEndDateTime="2018.03.10 16:24:13" UtcShift="4">
+      <Regions>
+        <Region Name="MainRegion">
+          <Variations>
+            <Variation Name="525x350" ImageType="RawJpg" ImageDpiX="96" ImageDpiY="96" Width="525" Height="350">
+              <Source><![CDATA[]]></Source>
+              <Data><![CDATA[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fHv/AEB/Dn/g8uP/AJCoAdVn4Z/8lH8V/wDYJ0v/ANHX9VP+EV8e/wDQH8Of+Dy4/wDkKtz4c+Edf0XxJrura5Dptt9ttLO1hh0+8kuf9S9wzMxeGPGfPUAAH7poA9BooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAOK+J/ijV/DdvoEWivYxXWpakbNpb+3edEQW08xIRZIyTmED73c1y/8AwlXj3/oMeHP/AAR3H/ybWv8AGL/j48D/APYcf/033tZVADf+Eq8e/wDQY8Of+CO4/wDk2j/hKvHv/QY8Of8AgjuP/k2nUUAN/wCEq8e/9Bjw5/4I7j/5No/4Srx7/wBBjw5/4I7j/wCTadXk3x+8Xat4Rj8NyrrN/wCFPCU11KmueJdLso7qfTlERaFmEsUqRQs4w8zxsqDGSgO4AHq//CVePf8AoMeHP/BHcf8AybR/wlXj3/oMeHP/AAR3H/ybXh1v8db3wh42vNC12KfWPCmj+EbbXbnxpElrsuc+duuNkc+SkgiCqkUOTJuwNhQ1q3n7SelaHo+v3niLwr4m8NXejWlrfyaVfQW0t3cW083kpLCtvPKr4cEMm4OvGV+ZcgHrn/CVePf+gx4c/wDBHcf/ACbR/wAJV49/6DHhz/wR3H/ybXH+A/iZD431DWdLn0LVvDGt6T5L3Ol60sHneVKpMUytBLLGyMUkXh8ho2BAxXZUAN/4Srx7/wBBjw5/4I7j/wCTaP8AhKvHv/QY8Of+CO4/+TadRQA3/hKvHv8A0GPDn/gjuP8A5Nrc+HPi7X9a8Sa7pOuTabc/YrSzuoZtPs5Lb/XPcKysHmkzjyFIII+8axas/DP/AJKP4r/7BOl/+jr+gD1KiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA85+MX/AB8eB/8AsOP/AOm+9rKr0DxV4N0rxpa2tvq0U8iWs/2mFra7mtpI5NjpuDxOrfdkcYzj5q5//hSvhf11z/wo9R/+P0Ac/RXQf8KV8L+uuf8AhR6j/wDH6P8AhSvhf11z/wAKPUf/AI/QBz9cx400nxdqEljL4U8R6ZoTxeYtxFq2jvqEM4bbtICXEDoylTghyCHOVPBHo/8AwpXwv665/wCFHqP/AMfo/wCFK+F/XXP/AAo9R/8Aj9AHzPD+yvDbaXDoyeI2fQ5vCq+GL9JrLN1JseaWK5glEgSF1lmLbWjkXCqBjGaxfi98HfFt94B8Waxq+tr4r8X3dlp+lWR0HRWtVt7dL6OV3WAyzl5Gb52YnbiJcIoDE/WX/ClfC/rrn/hR6j/8fo/4Ur4X9dc/8KPUf/j9AHkvw9+H+q+G9e8ReIvEeuWuv+IdaFtA81hp7WNtBbQKwiiSJppmzulmdmMhyZOAAAK7qug/4Ur4X9dc/wDCj1H/AOP0f8KV8L+uuf8AhR6j/wDH6AOforoP+FK+F/XXP/Cj1H/4/R/wpXwv665/4Ueo/wDx+gDn6s/DP/ko/iv/ALBOl/8Ao6/rX/4Ur4X9dc/8KPUf/j9bPhXwDovgy5vbjS4roXF4kcc8t5f3F27LGXKKDM7kAGRzgY+8aAOiooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//Z]]></Data>
+            </Variation>
+          </Variations>
+        </Region>
+      </Regions>
+      <Events>
+        <Event UtcDateTime="2018.03.10 16:24:15" Kind="Movement" InRegionX="507" InRegionY="294" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:15" Kind="Movement" InRegionX="490" InRegionY="294" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Click" InRegionX="490" InRegionY="294" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Movement" InRegionX="491" InRegionY="288" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Movement" InRegionX="495" InRegionY="278" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Movement" InRegionX="499" InRegionY="264" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Movement" InRegionX="502" InRegionY="248" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Movement" InRegionX="502" InRegionY="221" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Movement" InRegionX="501" InRegionY="195" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Movement" InRegionX="498" InRegionY="184" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Click" InRegionX="497" InRegionY="183" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:16" Kind="Movement" InRegionX="496" InRegionY="177" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="479" InRegionY="130" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="453" InRegionY="87" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="446" InRegionY="80" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="429" InRegionY="139" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="408" InRegionY="223" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="399" InRegionY="234" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="395" InRegionY="211" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="392" InRegionY="219" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="399" InRegionY="224" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="299" InRegionY="227" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="184" InRegionY="246" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Movement" InRegionX="165" InRegionY="254" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:17" Kind="Click" InRegionX="165" InRegionY="254" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="157" InRegionY="263" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="115" InRegionY="278" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="70" InRegionY="286" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="51" InRegionY="289" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Click" InRegionX="51" InRegionY="289" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="49" InRegionY="282" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="46" InRegionY="264" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Click" InRegionX="45" InRegionY="261" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="45" InRegionY="258" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="50" InRegionY="219" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="60" InRegionY="161" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="63" InRegionY="125" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="63" InRegionY="107" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="63" InRegionY="99" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="66" InRegionY="89" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:18" Kind="Movement" InRegionX="72" InRegionY="87" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="104" InRegionY="121" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="162" InRegionY="188" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="218" InRegionY="226" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="259" InRegionY="250" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Click" InRegionX="261" InRegionY="251" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="266" InRegionY="247" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="293" InRegionY="217" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="317" InRegionY="167" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="336" InRegionY="134" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="347" InRegionY="108" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="361" InRegionY="88" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="380" InRegionY="69" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="409" InRegionY="52" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="449" InRegionY="40" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Click" InRegionX="459" InRegionY="35" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:19" Kind="Movement" InRegionX="459" InRegionY="34" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:20" Kind="Movement" InRegionX="446" InRegionY="31" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:20" Kind="Movement" InRegionX="369" InRegionY="31" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:20" Kind="Movement" InRegionX="246" InRegionY="53" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:20" Kind="Movement" InRegionX="133" InRegionY="67" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:20" Kind="Movement" InRegionX="90" InRegionY="74" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:20" Kind="Movement" InRegionX="69" InRegionY="82" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:20" Kind="Movement" InRegionX="64" InRegionY="76" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:20" Kind="Movement" InRegionX="63" InRegionY="85" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Movement" InRegionX="53" InRegionY="133" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Movement" InRegionX="45" InRegionY="157" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Click" InRegionX="45" InRegionY="157" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Movement" InRegionX="43" InRegionY="149" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Movement" InRegionX="42" InRegionY="130" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Movement" InRegionX="46" InRegionY="106" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Movement" InRegionX="46" InRegionY="93" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Movement" InRegionX="48" InRegionY="87" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Click" InRegionX="51" InRegionY="76" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Movement" InRegionX="51" InRegionY="76" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Command" InRegionX="70" InRegionY="69,94" RegionName="MainRegion" ImageName="525x350" CommandName="Stop" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Click" InRegionX="51" InRegionY="76" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:21" Kind="Command" InRegionX="70" InRegionY="69,94" RegionName="MainRegion" ImageName="525x350" CommandName="Stop" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="51" InRegionY="68" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="62" InRegionY="37" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="64" InRegionY="28" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Click" InRegionX="64" InRegionY="28" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="71" InRegionY="24" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Command" InRegionX="70" InRegionY="29,98" RegionName="MainRegion" ImageName="525x350" CommandName="Start" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="93" InRegionY="23" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Click" InRegionX="100" InRegionY="23" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="100" InRegionY="23" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Command" InRegionX="70" InRegionY="29,98" RegionName="MainRegion" ImageName="525x350" CommandName="Start" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="101" InRegionY="30" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="101" InRegionY="42" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="101" InRegionY="48" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Movement" InRegionX="99" InRegionY="61" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:22" Kind="Click" InRegionX="99" InRegionY="65" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Command" InRegionX="70" InRegionY="69,94" RegionName="MainRegion" ImageName="525x350" CommandName="Stop" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="99" InRegionY="67" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="105" InRegionY="67" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="121" InRegionY="60" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="120" InRegionY="54" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="115" InRegionY="39" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Click" InRegionX="115" InRegionY="35" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="115" InRegionY="32" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Command" InRegionX="70" InRegionY="29,98" RegionName="MainRegion" ImageName="525x350" CommandName="Start" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="141" InRegionY="29" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="204" InRegionY="27" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="278" InRegionY="25" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="340" InRegionY="18" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="366" InRegionY="11" RegionName="MainRegion" ImageName="525x350" />
+        <Event UtcDateTime="2018.03.10 16:24:23" Kind="Movement" InRegionX="385" InRegionY="1" RegionName="MainRegion" ImageName="525x350" />
+      </Events>
+    </Session>
+  </Sessions>
+</SessionGroup>

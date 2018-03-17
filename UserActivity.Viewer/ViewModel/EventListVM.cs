@@ -26,12 +26,14 @@ namespace UserActivity.Viewer.ViewModel
         /// <summary>Ctor.</summary>
         public EventListVM()
         {
+            Header = "Список Событий";
             LoadedDataInfo = string.Format(DataStatusStringFormat, 0, 0, 0);
             FilteredDataInfo = string.Format(DataStatusStringFormat, 0, 0, 0);
 
             EventTypeSelector.Add(EventKind.Unknown, "Любой");
             EventTypeSelector.Add(EventKind.Click, "Клики Мыши");
             EventTypeSelector.Add(EventKind.Movement, "Движения Мыши");
+            EventTypeSelector.Add(EventKind.Command, "Команды");
             EventTypeSelector.SelectedItemChanged += OnSelectedEventTypeChanged;
         }
 

@@ -9,7 +9,7 @@
     <Grid VerticalAlignment="Center">
         <StackPanel>
             <Button
-                Content="Список"
+                Content="Список Событий"
                 Command="{Binding Path=OpenEventListTabCommand, Mode=OneWay}"
                 Style="{StaticResource LinkButton}">
             </Button>

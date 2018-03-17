@@ -47,12 +47,13 @@
             IsReadOnly="True" AutoGenerateColumns="False"
             ItemsSource="{Binding Path=Events, Mode=OneWay}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Дата/Время (UTC)" Binding="{Binding Path=LocalDateTime, Mode=OneWay}" />
-                <DataGridTextColumn Header="Тип" Binding="{Binding Path=Kind, Mode=OneWay}" />
-                <DataGridTextColumn Header="X" Binding="{Binding Path=InRegionX, Mode=OneWay}" />
-                <DataGridTextColumn Header="Y" Binding="{Binding Path=InRegionY, Mode=OneWay}" />
-                <DataGridTextColumn Header="Регион" Binding="{Binding Path=RegionName, Mode=OneWay}" />
-                <DataGridTextColumn Header="Вариация" Binding="{Binding Path=ImageName, Mode=OneWay}" />
+                <DataGridTextColumn Header="Дата/Время (UTC)" Binding="{Binding Path=LocalDateTime, Mode=OneTime}" />
+                <DataGridTextColumn Header="Тип" Binding="{Binding Path=Kind, Mode=OneTime}" />
+                <DataGridTextColumn Header="Регион" Binding="{Binding Path=RegionName, Mode=OneTime}" />
+                <DataGridTextColumn Header="Вариация" Binding="{Binding Path=ImageName, Mode=OneTime}" />
+                <DataGridTextColumn Header="X" Binding="{Binding Path=InRegionX, Mode=OneTime}" />
+                <DataGridTextColumn Header="Y" Binding="{Binding Path=InRegionY, Mode=OneTime}" />
+                <DataGridTextColumn Header="Команда" Binding="{Binding Path=CommandName, Mode=OneTime}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

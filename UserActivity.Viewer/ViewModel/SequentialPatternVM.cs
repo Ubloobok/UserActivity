@@ -40,8 +40,8 @@ namespace UserActivity.Viewer.ViewModel
             ClassFunc.Add(ClassFuncByTypeAndCommand, "По Типу и Команде");
             ClassFunc.Add(ClassFuncByCommand, "Только по Команде");
             TimeFunc.SelectedItemChanged += OnSelectedTimeFuncChanged;
-            TimeFunc.Add(TimeFuncKLM, "KLM");
-            TimeFunc.Add(TimeFuncTLM, "TLM");
+            TimeFunc.Add(TimeFuncKlmAverage, "KLM (average)");
+            TimeFunc.Add(TimeFuncKlmSkilled, "KLM (skilled)");
         }
 
         /// <summary>Import UAD from file(s) command.</summary>
@@ -66,21 +66,20 @@ namespace UserActivity.Viewer.ViewModel
 
         private IEnumerable<string> ClassFuncByTypeWithoutCommand(Event ev)
         {
-            if (ev.Kind != EventKind.Command)
-                yield return ev.Kind.ToString().Substring(0, 3);
+            if (ev.Kind == EventKind.Click) yield return "Click";
+            if (ev.Kind == EventKind.Movement) yield return "Move";
         }
 
         private IEnumerable<string> ClassFuncByTypeAndCommand(Event ev)
         {
-            if (ev.Kind == EventKind.Command)
-                yield return ev.CommandName;
-            else yield return ev.Kind.ToString().Substring(0, 3);
+            if (ev.Kind == EventKind.Click) yield return "Click";
+            if (ev.Kind == EventKind.Movement) yield return "Move";
+            if (ev.Kind == EventKind.Command) yield return ev.CommandName;
         }
 
         private IEnumerable<string> ClassFuncByCommand(Event ev)
         {
-            if (ev.Kind == EventKind.Command)
-                yield return ev.CommandName;
+            if (ev.Kind == EventKind.Command) yield return ev.CommandName;
         }
 
         /// <summary>Input data.</summary>
@@ -93,18 +92,24 @@ namespace UserActivity.Viewer.ViewModel
         /// <summary>Sessions after classification.</summary>
         public ObservableCollection<string[]> InputSessions { get; } = new ObservableCollection<string[]>();
 
-        /// <summary>Selected time calculation function.</summary>
-        public SelectableCollection<CollectionItem<Func<string, int>>> TimeFunc { get; }
-            = new SelectableCollection<CollectionItem<Func<string, int>>>();
+        /// <summary>Selected time calculation function in seconds.</summary>
+        public SelectableCollection<CollectionItem<Func<string, double>>> TimeFunc { get; }
+            = new SelectableCollection<CollectionItem<Func<string, double>>>();
 
-        private int TimeFuncKLM(string @class)
+        private double TimeFuncKlmAverage(string @class)
         {
-            return 10;
+            if (@class == "Move") return 1.1; // P;
+            if (@class == "Click") return 0.5; // K;
+            if (@class == "Cmd") return 1.35; // M;
+            return 1.35;
         }
 
-        private int TimeFuncTLM(string @class)
+        private double TimeFuncKlmSkilled(string @class)
         {
-            return 20;
+            if (@class == "Move") return 0.8; // P;
+            if (@class == "Click") return 0.2; // K;
+            if (@class == "Cmd") return 1.15; // M;
+            return 1.15;
         }
 
         /// <summary>Max pattern length.</summary>
