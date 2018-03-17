@@ -11,8 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserActivity.Viewer", "User
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E06EA3F3-E5B1-403E-B3AE-357DDEEBC25C}"
 	ProjectSection(SolutionItems) = preProject
+		Samples\E02ABA1B-2C91-40CB-B024-E087D73BC023.uad = Samples\E02ABA1B-2C91-40CB-B024-E087D73BC023.uad
 		Samples\F5B1E852-185C-4012-8E87-BEB90FB19071.uad = Samples\F5B1E852-185C-4012-8E87-BEB90FB19071.uad
-		Samples\Sample1.uad = Samples\Sample1.uad
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserActivity.Tests", "UserActivity.Tests\UserActivity.Tests.csproj", "{F0ED18CE-1BC7-4A72-B2CF-53DF979F6D08}"
