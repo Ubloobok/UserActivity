@@ -35,7 +35,7 @@ namespace UserActivity.Viewer.ViewModel
             Header = "Тепловая Карта";
             LoadedDataInfo = string.Format(DataStatusStringFormat, 0, 0, 0);
             FilteredDataInfo = string.Format(DataStatusStringFormat, 0, 0, 0);
-            HeatMapOpacity = 0.75;
+            HeatMapOpacity = 0.8;
             PointGradientRadius = 40;
             PointOverlapRadius = 10;
 

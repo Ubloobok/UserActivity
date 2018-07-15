@@ -30,13 +30,14 @@ namespace UserActivity.Viewer.View
         private List<HeatPointItem> _heatPoints;
         private RenderTargetBitmap _intensityMap;
         private Rectangle _clearRectangle;
+        private byte _defaultIntensity = 255;
 
         public HeatMapView()
         {
             InitializeComponent();
 
             AddativeBlendClear cleareffect = new AddativeBlendClear();
-            cleareffect.ClearColor = Color.FromArgb(0x01, 0xFF, 0xFF, 0xFF);
+            cleareffect.ClearColor = Color.FromScRgb(1, 0, 0, 0);
 
             _heatPoints = new List<HeatPointItem>();
             _intensityMap = new RenderTargetBitmap(1200, 1200, 96, 96, PixelFormats.Pbgra32);
@@ -89,11 +90,9 @@ namespace UserActivity.Viewer.View
             _heatPoints.Clear();
             foreach (var activity in events)
             {
-                _heatPoints.Add(new HeatPointItem((int)activity.InRegionX, (int)activity.InRegionY, 255));
+                _heatPoints.Add(new HeatPointItem((int)activity.InRegionX, (int)activity.InRegionY, _defaultIntensity));
             }
-
-            ClearIntensityMap();
-            RenderIntensityMap(_intensityMap, _heatPoints, true);
+            Refresh();
         }
 
         public void SetRegion(RegionImageItemVM region)
@@ -149,52 +148,66 @@ namespace UserActivity.Viewer.View
         private void ClearHeatClick(object sender, RoutedEventArgs e)
         {
             _heatPoints.Clear();
-            ClearIntensityMap();
+            Refresh();
         }
 
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
 
-            if (!(Keyboard.Modifiers == ModifierKeys.Control))
+            if (Keyboard.Modifiers == ModifierKeys.Control)
             {
-                return;
+                var p = e.GetPosition(HeatImage);
+                int x = (int)(p.X);
+                int y = (int)(p.Y);
+
+                _heatPoints.Add(new HeatPointItem(x, y, _defaultIntensity));
+                Refresh();
             }
-
-            var p = e.GetPosition(HeatImage);
-            int x = (int)(p.X);
-            int y = (int)(p.Y);
-            byte intensity = 255;
-
-            _heatPoints.Add(new HeatPointItem(x, y, intensity));
-
-            ClearIntensityMap();
-            RenderIntensityMap(_intensityMap, _heatPoints, true);
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
 
-            if (!(Keyboard.Modifiers == ModifierKeys.Alt))
+            if (Keyboard.Modifiers == ModifierKeys.Alt)
             {
-                return;
+                var p = e.GetPosition(HeatImage);
+                int x = (int)(p.X);
+                int y = (int)(p.Y);
+
+                _heatPoints.Add(new HeatPointItem(x, y, _defaultIntensity));
+                Refresh();
             }
 
-            var p = e.GetPosition(HeatImage);
-            int x = (int)(p.X);
-            int y = (int)(p.Y);
-            byte intensity = 255;
+            if (Keyboard.Modifiers == ModifierKeys.Shift)
+            {
+                var p = e.GetPosition(HeatImage);
+                int x = (int)(p.X);
+                int y = (int)(p.Y);
 
-            _heatPoints.Add(new HeatPointItem(x, y, intensity));
+                int bitsPerPixel = 32;
+                int bytesPerPixel = bitsPerPixel / 8;
 
-            ClearIntensityMap();
-            RenderIntensityMap(_intensityMap, _heatPoints, true);
+                int stride = _intensityMap.PixelWidth * bytesPerPixel;
+                byte[] data = new byte[_intensityMap.PixelHeight * stride];
+                _intensityMap.CopyPixels(data, stride, 0);
+
+                // First three bytes have equal value.
+                int position = y * stride + x * bytesPerPixel;
+                byte intensity = data[position];
+                CurIntentsity.Text = $"X: {x}  Y: {y}  I: {intensity}";
+            }
+        }
+
+        private void OnHeatmapMethodChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
         }
 
         private void RenderIntensityMap(RenderTargetBitmap map, List<HeatPointItem> points, bool addHeat)
         {
-            RadialGradientBrush radialBrush = new RadialGradientBrush();
+            bool isOld = ((ComboBoxItem)HeatmapMethod.SelectedValue).Content.ToString() == "Старый";
 
             int displayRadius = ViewModel.PointGradientRadius;
             int groupRadius = ViewModel.PointOverlapRadius;
@@ -203,29 +216,82 @@ namespace UserActivity.Viewer.View
                 .Max(point => points
                     .Where(p => (Math.Abs(point.X - p.X) <= groupRadius) && (Math.Abs(point.Y - p.Y) <= groupRadius))
                     .Count());
-            float rawIntensity = 1f / maxNearestCount;
-            float intensity = rawIntensity;
+            float startIntensity = (1f / maxNearestCount);
 
-            foreach (HeatPointItem point in points)
+            if (isOld)
             {
-                DrawingVisual dv = new DrawingVisual();
-                using (DrawingContext ctx = dv.RenderOpen())
-                {
-                    radialBrush.GradientStops.Clear();
-                    if (addHeat)
-                    {
-                        radialBrush.GradientStops.Add(new GradientStop(Color.FromScRgb(intensity, 0, 0, 0), 0.0));
-                        radialBrush.GradientStops.Add(new GradientStop(Color.FromScRgb(0f, 0, 0, 0), 1.0));
-                    }
-                    else
-                    {
-                        radialBrush.GradientStops.Add(new GradientStop(Color.FromArgb(point.Intensity, 0xFF, 0xFF, 0xFF), 0.0));
-                        radialBrush.GradientStops.Add(new GradientStop(Color.FromArgb(0, 0xFF, 0xFF, 0xFF), 1.0));
-                    }
+                RadialGradientBrush radialBrush = new RadialGradientBrush();
 
-                    ctx.DrawRectangle(radialBrush, null, new Rect(point.X - displayRadius, point.Y - displayRadius, displayRadius * 2, displayRadius * 2));
+                foreach (HeatPointItem point in points)
+                {
+                    DrawingVisual dv = new DrawingVisual();
+                    using (DrawingContext ctx = dv.RenderOpen())
+                    {
+                        radialBrush.GradientStops.Clear();
+                        //if (addHeat)
+                        //{
+                            radialBrush.GradientStops.Add(new GradientStop(Color.FromScRgb(startIntensity, 0, 0, 0), 0.0));
+                            radialBrush.GradientStops.Add(new GradientStop(Color.FromScRgb(0f, 0, 0, 0), 1.0));
+                        //}
+                        //else
+                        //{
+                        //    radialBrush.GradientStops.Add(new GradientStop(Color.FromArgb(intensity, 0, 0, 0), 0.0));
+                        //    radialBrush.GradientStops.Add(new GradientStop(Color.FromArgb(0, 0, 0, 0), 1.0));
+                        //}
+
+                        ctx.DrawRectangle(radialBrush, null, new Rect(point.X - displayRadius, point.Y - displayRadius, displayRadius * 2, displayRadius * 2));
+                    }
+                    map.Render(dv);
                 }
-                map.Render(dv);
+
+                HeatImage.Source = map;
+            }
+            else
+            {
+                int width = (int)HeatImage.ActualWidth;
+                int height = (int)HeatImage.ActualHeight;
+                // variables declaration
+                WriteableBitmap img = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgra32, null);
+                uint[] pixels = new uint[width * height];
+
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        var intensity = 0.0d;
+                        for (int i = 0; i < points.Count; i++)
+                        {
+                            var point = points[i];
+                            var distance = Math.Sqrt(Math.Pow(x - point.X, 2) + Math.Pow(y - point.Y, 2));
+                            if (distance < displayRadius)
+                            {
+                                intensity += 1.0d - distance / displayRadius;
+                            }
+                        }
+                        intensity = intensity == 0 ? 0 : intensity / maxNearestCount;
+
+                        int pixel = width * y + x;
+
+                        int color =
+                            intensity == 0 ? 255 :
+                            intensity >= 1 ? 0 :
+                            Convert.ToInt32((1 - intensity) * 255);
+
+                        int red = color;
+                        int green = color;
+                        int blue = color;
+
+                        int alpha =
+                            intensity == 0 ? 255 :
+                            intensity >= 1 ? 0 :
+                            Convert.ToInt32((1 - intensity) * 255);
+
+                        pixels[pixel] = (uint)((alpha << 24) + (red << 16) + (green << 8) + blue);
+                    }
+                }
+
+                img.WritePixels(new Int32Rect(0, 0, width, height), pixels, width * 4, 0);
+                HeatImage.Source = img;  // image1 is a WPF Image in my XAML
             }
         }
 
@@ -241,8 +307,11 @@ namespace UserActivity.Viewer.View
 
         public void Refresh()
         {
-            ClearIntensityMap();
-            RenderIntensityMap(_intensityMap, _heatPoints, true);
+            if (_intensityMap != null)
+            {
+                ClearIntensityMap();
+                RenderIntensityMap(_intensityMap, _heatPoints, true);
+            }
         }
 
         public void Unload()
@@ -254,6 +323,17 @@ namespace UserActivity.Viewer.View
             HeatImage = null;
             BackgroundImage.Source = null;
             BackgroundImage = null;
+        }
+
+        private void OnButtonAddDataClick(object sender, RoutedEventArgs e)
+        {
+            var points =
+                from pointString in InputData.Text?.Split(';')
+                let pointParts = pointString.Split(',')
+                select new HeatPointItem(int.Parse(pointParts[0]), int.Parse(pointParts[1]), _defaultIntensity);
+
+            _heatPoints.AddRange(points);
+            Refresh();
         }
     }
 }

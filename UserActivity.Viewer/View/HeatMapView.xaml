@@ -25,6 +25,14 @@
                     Command="{Binding Path=ImportFileCommand, Mode=OneWay}"
                     Style="{StaticResource LinkButton}">
                 </Button>
+                <TextBox
+                    x:Name="InputData">
+                </TextBox>
+                <Button
+                    Content="Добавить данные"
+                    Style="{StaticResource LinkButton}"
+                    Click="OnButtonAddDataClick">
+                </Button>
                 <TextBlock
                     Text="{Binding Path=LoadedDataInfo, Mode=OneWay}"
                     Style="{StaticResource TextBlockStyleBodyText}"
@@ -60,10 +68,10 @@
                 <ComboBox
                     x:Name="PalleteSelector"
                     Height="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                    <ComboBoxItem Height="20">
+                    <ComboBoxItem Height="20" HorizontalContentAlignment="Stretch">
                         <Rectangle>
                             <Rectangle.Fill>
-                                <LinearGradientBrush x:Name="PalleteRainbow" StartPoint="0,0.5" EndPoint="1,0.5">
+                                <LinearGradientBrush x:Name="Pallete_Rainbow" StartPoint="0,0.5" EndPoint="1,0.5">
                                     <GradientStop Color="Black" Offset="1.00000" />
                                     <GradientStop Color="DarkBlue" Offset="0.90000" />
                                     <GradientStop Color="Purple" Offset="0.80000" />
@@ -79,7 +87,20 @@
                     <ComboBoxItem Height="20">
                         <Rectangle>
                             <Rectangle.Fill>
-                                <LinearGradientBrush x:Name="PalleteBlackBody" StartPoint="0,0.5" EndPoint="1,0.5">
+                                <LinearGradientBrush x:Name="Pallete_HeatmapJS_DefaultRainbow_Blur_0_85" StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="Black" Offset="1.00" />
+                                    <GradientStop Color="#0000FF" Offset="0.7875" />
+                                    <GradientStop Color="#00FF00" Offset="0.5325" />
+                                    <GradientStop Color="Yellow" Offset="0.2775" />
+                                    <GradientStop Color="#FF0000" Offset="0.15" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </ComboBoxItem>
+                    <ComboBoxItem Height="20">
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <LinearGradientBrush x:Name="Pallete_BlackBody" StartPoint="0,0.5" EndPoint="1,0.5">
                                     <GradientStop Color="#000000" Offset="1.00000" />
                                     <GradientStop Color="#F82600" Offset="0.88888" />
                                     <GradientStop Color="#FC7700" Offset="0.77777" />
@@ -97,7 +118,7 @@
                     <ComboBoxItem Height="20">
                         <Rectangle>
                             <Rectangle.Fill>
-                                <LinearGradientBrush x:Name="PalleteOpacity" StartPoint="0,0.5" EndPoint="1,0.5">
+                                <LinearGradientBrush x:Name="Pallete_Opacity" StartPoint="0,0.5" EndPoint="1,0.5">
                                     <GradientStop Color="#00FFFFFF" Offset="0" />
                                     <GradientStop Color="#FF000000" Offset="1" />
                                 </LinearGradientBrush>
@@ -115,6 +136,13 @@
                     Value="{Binding Path=PointOverlapRadius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Minimum="0" Maximum="50">
                 </xctk:IntegerUpDown>
+                <TextBlock Text="Метод" Style="{StaticResource TextBlockStyleSmallSubHeader}" />
+                <ComboBox
+                    x:Name="HeatmapMethod"
+                    SelectedIndex="0" SelectionChanged="OnHeatmapMethodChanged">
+                    <ComboBoxItem Content="Старый" />
+                    <ComboBoxItem Content="Новый" />
+                </ComboBox>
                 <Button
                     Content="Очистить"
                     Click="ClearHeatClick"
@@ -129,7 +157,7 @@
             Grid.Column="1" Margin="0,0,5,0"
             HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
             HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid Background="White">
                 <Border
                     VerticalAlignment="Top" HorizontalAlignment="Left">
                     <Image x:Name="BackgroundImage" />
@@ -143,9 +171,11 @@
                         </Image.Effect>
                     </Image>
                 </Border>
+                <TextBlock
+                    x:Name="CurIntentsity"
+                    Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                </TextBlock>
             </Grid>
         </ScrollViewer>
-
     </Grid>
-
 </UserControl>

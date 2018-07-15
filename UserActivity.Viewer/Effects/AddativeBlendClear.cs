@@ -22,7 +22,11 @@ namespace UserActivity.Viewer.Effects
     {
         
         /// <summary></summary>
-        public static readonly DependencyProperty ClearColorProperty = DependencyProperty.Register("ClearColor", typeof(System.Windows.Media.Color), typeof(AddativeBlendClear), new UIPropertyMetadata(Color.FromArgb(255,0,0,0), PixelShaderConstantCallback(0)));
+        public static readonly DependencyProperty ClearColorProperty = DependencyProperty.Register("ClearColor",
+            typeof(System.Windows.Media.Color),
+            typeof(AddativeBlendClear),
+            new UIPropertyMetadata(Color.FromScRgb(1,0,0,0), PixelShaderConstantCallback(0)));
+
         /// <summary></summary>
         public static readonly DependencyProperty InputProperty = ShaderEffect.RegisterPixelShaderSamplerProperty("Input", typeof(AddativeBlendClear), 0, SamplingMode.Auto);
         
@@ -38,27 +42,15 @@ namespace UserActivity.Viewer.Effects
         /// <summary></summary>
         public virtual System.Windows.Media.Color ClearColor
         {
-            get
-            {
-                return ((System.Windows.Media.Color)(this.GetValue(ClearColorProperty)));
-            }
-            set
-            {
-                this.SetValue(ClearColorProperty, value);
-            }
+            get { return ((System.Windows.Media.Color)(this.GetValue(ClearColorProperty))); }
+            set { this.SetValue(ClearColorProperty, value); }
         }
         
         /// <summary></summary>
         public virtual System.Windows.Media.Brush Input
         {
-            get
-            {
-                return ((System.Windows.Media.Brush)(this.GetValue(InputProperty)));
-            }
-            set
-            {
-                this.SetValue(InputProperty, value);
-            }
+            get { return ((System.Windows.Media.Brush)(this.GetValue(InputProperty))); }
+            set { this.SetValue(InputProperty, value); }
         }
     }
 }
